@@ -1,3 +1,17 @@
 img{
-    width: 200px;
+    width: 300px;
+}
+div{
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+.textoNombreFruta{
+    font-size: x-large;
+}
+.textoPrecio{
+    font-size: larger;
 }
