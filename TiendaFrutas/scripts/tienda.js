@@ -43,21 +43,35 @@ function sumaFrutaUva(){
     arrayFrutasContador[9]++;
     console.log(arrayFrutasContador);
 }
-
+function precioTotal(){
+    var precioTotal=0;
+    for(i=0;i<arrayFrutasPrecio.length;i++){
+        precioTotal= precioTotal + (arrayFrutasContador[i] * arrayFrutasPrecio[i]);
+    }
+   return precioTotal;
+}
+function precioMedio(){
+    var kilosTotal=0;
+    for(i=0;i<arrayFrutasContador.length;i++){
+       kilosTotal=kilosTotal + arrayFrutasContador[i];
+    }
+    var precioMedio=precioTotal()/kilosTotal;
+    return precioMedio;
+}
 function mostrarResultados(){
     var arrayResultado=new Array(10);
     var resultado="";
-    
-
     for(i=0;i<arrayResultado.length;i++){
         arrayResultado[i]=arrayFrutasNombres[i] + " ---- " + arrayFrutasContador[i] + " kilos " ;
     }
     for(i=0;i<arrayResultado.length;i++){
          resultado= resultado + arrayResultado[i] + "\n" ;
     }
-    
-    
     var areaTexto=document.getElementById("areaTexto");
     var texto= document.createTextNode(resultado);
+    var texto2=document.createTextNode("Precio total :" + precioTotal() + " €");
+    var texto3=document.createTextNode("Precio medio :" + precioMedio()  + " €/kg ")
     areaTexto.appendChild(texto);
+    areaTexto.appendChild(texto2);
+    areaTexto.appendChild(texto3);
 }
