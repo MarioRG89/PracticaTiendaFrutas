@@ -73,12 +73,10 @@ function precioMedio() {
 }
 //Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
 function recogidaResultados() {
-    var arrayResultado = new Array(10);
-    var resultado = "";
-    for (i = 0; i < arrayResultado.length; i++) {
+    let arrayResultado = [];
+    let resultado = "";
+    for (i = 0; i < 10; i++) {
         arrayResultado[i] = arrayFrutasNombres[i] + " ---- " + arrayFrutasContador[i] + " kilos ";
-    }
-    for (i = 0; i < arrayResultado.length; i++) {
         resultado = resultado + arrayResultado[i] + "\n";
     }
     return resultado;
