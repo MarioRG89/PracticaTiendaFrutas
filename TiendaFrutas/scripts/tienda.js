@@ -64,17 +64,12 @@ function precioTotal() {
 y de los kilos que se obtienen en la misma se incluye el error de la posibilidad de dividir entre 0 
 si no  se han agregado kilos de fruta */
 function precioMedio() {
-
-    var kilosTotal = 0;
-    for (i = 0; i < arrayFrutasContador.length; i++) {
-        kilosTotal = kilosTotal + arrayFrutasContador[i];
-    }
+    let kilosTotal = arrayFrutasContador.reduce((kiloTot,kiloAc)=> kiloTot + kiloAc);
     if (kilosTotal == 0) {
         throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
     }
-    var precioMedio = precioTotal() / kilosTotal;
+    let precioMedio = precioTotal() / kilosTotal;
     return precioMedio;
-
 }
 //Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
 function recogidaResultados() {
