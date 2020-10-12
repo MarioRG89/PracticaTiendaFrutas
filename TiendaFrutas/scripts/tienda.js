@@ -74,7 +74,7 @@ function precioMedio() {
 function recogidaResultados() {    
     let arrayContadorString=arrayFrutasContador.map(palabra=>palabra.toString());
     let numArray2 = arrayFrutasNombres.map((elemento,indice)=> 
-     elemento + " " + arrayContadorString[indice] + " kilos "
+     elemento + " ----" + arrayContadorString[indice] + " kilos "
      );
     let resultado=numArray2.join("\n");
     return resultado;
@@ -84,7 +84,7 @@ al usar la funcion del precioMedio */
 function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
-        var texto = document.createTextNode(recogidaResultados());
+        var texto = document.createTextNode(recogidaResultados() + "\n");
         var texto2 = document.createTextNode("Precio total :" + obtenerprecioTotal() + " €" + "\n");
         var texto3 = document.createTextNode("Precio medio :" + precioMedio() + " €/kg " + "\n")
         areaTexto.appendChild(texto);
