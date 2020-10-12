@@ -52,7 +52,8 @@ function sumaFrutaUva() {
     arrayFrutasContador[9]++;
     console.log(arrayFrutasContador);
 }
-//funcion que calcula el precio total a partir de los precios y los kilos y devuelve el precioTotal
+//funcion que calcula el precio total a partir de los arrays de  precios y el contador kilos y devuelve el precioTotal que es la suma de los kg de fruta por su precio
+
 function obtenerprecioTotal() {
     let arrayPrecio=arrayFrutasPrecio.map((elemento,indice)=> 
     elemento * arrayFrutasContador[indice]);
@@ -66,15 +67,16 @@ function precioMedio() {
     let kilosTotal = arrayFrutasContador.reduce((kiloTot,kiloAc)=> kiloTot + kiloAc);
     if (kilosTotal == 0) {
         throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
+    }else{
+        let precioMedio = obtenerprecioTotal() / kilosTotal;
+        return precioMedio;
     }
-    let precioMedio = obtenerprecioTotal() / kilosTotal;
-    return precioMedio;
 }
 //Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
 function recogidaResultados() {    
     let arrayContadorString=arrayFrutasContador.map(palabra=>palabra.toString());
     let numArray2 = arrayFrutasNombres.map((elemento,indice)=> 
-     elemento + " ----" + arrayContadorString[indice] + " kilos "
+     elemento + " ---- " + arrayContadorString[indice] + " kilos "
      );
     let resultado=numArray2.join("\n");
     return resultado;
@@ -85,8 +87,8 @@ function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
         var texto = document.createTextNode(recogidaResultados() + "\n");
-        var texto2 = document.createTextNode("Precio total :" + obtenerprecioTotal() + " €" + "\n");
-        var texto3 = document.createTextNode("Precio medio :" + precioMedio() + " €/kg " + "\n")
+        var texto2 = document.createTextNode("Precio total : " + obtenerprecioTotal() + " €" + "\n");
+        var texto3 = document.createTextNode("Precio medio : " + precioMedio() + " €/kg " + "\n")
         areaTexto.appendChild(texto);
         areaTexto.appendChild(texto2);
         areaTexto.appendChild(texto3);
