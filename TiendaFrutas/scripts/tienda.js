@@ -53,11 +53,10 @@ function sumaFrutaUva() {
     console.log(arrayFrutasContador);
 }
 //funcion que calcula el precio total a partir de los precios y los kilos y devuelve el precioTotal
-function precioTotal() {
-    var precioTotal = 0;
-    for (i = 0; i < arrayFrutasPrecio.length; i++) {
-        precioTotal = precioTotal + (arrayFrutasContador[i] * arrayFrutasPrecio[i]);
-    }
+function obtenerprecioTotal() {
+    let arrayPrecio=arrayFrutasPrecio.map((elemento,indice)=> 
+    elemento * arrayFrutasContador[indice]);
+    let precioTotal=arrayPrecio.reduce((precioTot,precioInd)=>precioTot +precioInd);
     return precioTotal;
 }
 /*funcion que calcula el precio medio a partir del precioTotal obtenido en la funcion precioTotal 
@@ -68,17 +67,16 @@ function precioMedio() {
     if (kilosTotal == 0) {
         throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
     }
-    let precioMedio = precioTotal() / kilosTotal;
+    let precioMedio = obtenerprecioTotal() / kilosTotal;
     return precioMedio;
 }
 //Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
-function recogidaResultados() {
-    let arrayResultado = [];
-    let resultado = "";
-    for (i = 0; i < 10; i++) {
-        arrayResultado[i] = arrayFrutasNombres[i] + " ---- " + arrayFrutasContador[i] + " kilos ";
-        resultado = resultado + arrayResultado[i] + "\n";
-    }
+function recogidaResultados() {    
+    let arrayContadorString=arrayFrutasContador.map(palabra=>palabra.toString());
+    let numArray2 = arrayFrutasNombres.map((elemento,indice)=> 
+     elemento + " " + arrayContadorString[indice] + " kilos "
+     );
+    let resultado=numArray2.join("\n");
     return resultado;
 }
 /*Funcion para mostrar los datos que se han recogido y se mostrara en la pagina en el area de texto, tambien se maneja el posible error
@@ -87,7 +85,7 @@ function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
         var texto = document.createTextNode(recogidaResultados());
-        var texto2 = document.createTextNode("Precio total :" + precioTotal() + " €" + "\n");
+        var texto2 = document.createTextNode("Precio total :" + obtenerprecioTotal() + " €" + "\n");
         var texto3 = document.createTextNode("Precio medio :" + precioMedio() + " €/kg " + "\n")
         areaTexto.appendChild(texto);
         areaTexto.appendChild(texto2);
