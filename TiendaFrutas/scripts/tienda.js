@@ -1,7 +1,7 @@
 //Variable globales para manejar los arrays en la diferentes funciones
-arrayFrutasContador = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-arrayFrutasPrecio = [13.4, 3.75, 1.75, 2.69, 0.75, 2.16, 1.60, 2.15, 2.75, 1.75];
-arrayFrutasNombres = ["Arandanos", "Fresa", "ManzanaR", "ManzanaV", "Melon", "Naranja", "Pera", "Platano", "Sandia", "Uvas"];
+var arrayFrutasContador = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var arrayFrutasPrecio = [13.4, 3.75, 1.75, 2.69, 0.75, 2.16, 1.60, 2.15, 2.75, 1.75];
+var arrayFrutasNombres = ["Arandanos", "Fresa", "ManzanaR", "ManzanaV", "Melon", "Naranja", "Pera", "Platano", "Sandia", "Uvas"];
 //funcion para la suma de la fruta arandano cada vez que pincha imagen
 function sumaFrutaArandano() {
     arrayFrutasContador[0]++;
