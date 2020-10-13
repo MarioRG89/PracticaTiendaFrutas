@@ -68,6 +68,8 @@ function recogidaResultados() {
     let numArray2 = arrayFrutasNombres.map((elemento,indice)=> 
      elemento + " ---- " + arrayContadorString[indice] + " kilos "
      );
+    numArray2.sort();
+    numArray2.reverse();
     let resultado=numArray2.join("\n");
     return resultado;
 }
