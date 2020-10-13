@@ -5,52 +5,42 @@ arrayFrutasNombres = ["Arandanos", "Fresa", "ManzanaR", "ManzanaV", "Melon", "Na
 //funcion para la suma de la fruta arandano cada vez que pincha imagen
 function sumaFrutaArandano() {
     arrayFrutasContador[0]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta fresa cada vez que pincha imagen
 function sumaFrutaFresa() {
     arrayFrutasContador[1]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta manzana roja cada vez que pincha imagen
 function sumaFrutaManzanaR() {
     arrayFrutasContador[2]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta manzana verde cada vez que pincha imagen
 function sumaFrutaManzanaV() {
     arrayFrutasContador[3]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta melon cada vez que pincha imagen
 function sumaFrutaMelon() {
     arrayFrutasContador[4]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta naranja cada vez que pincha imagen
 function sumaFrutaNaranja() {
     arrayFrutasContador[5]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta pera cada vez que pincha imagen
 function sumaFrutaPera() {
     arrayFrutasContador[6]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta platano cada vez que pincha imagen
 function sumaFrutaPlatano() {
     arrayFrutasContador[7]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta sandia cada vez que pincha imagen
 function sumaFrutaSandia() {
     arrayFrutasContador[8]++;
-    console.log(arrayFrutasContador);
 }
 //funcion para la suma de la fruta uva cada vez que pincha imagen
 function sumaFrutaUva() {
     arrayFrutasContador[9]++;
-    console.log(arrayFrutasContador);
 }
 //funcion que calcula el precio total a partir de los arrays de  precios y el contador kilos y devuelve el precioTotal que es la suma de los kg de fruta por su precio
 
