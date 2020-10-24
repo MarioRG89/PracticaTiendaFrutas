@@ -87,12 +87,15 @@ function precioMedio() {
     let kilosTotal = arrayFrutas.reduce(function (kiloTo, kiloAct) {
         return kiloTo + kiloAct.kilos
     }, valorIn);
-    let precioMedio = obtenerprecioTotal() / kilosTotal;
-    return precioMedio;
+    if(kilosTotal==0){
+        throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
+    }else{
+        let precioMedio = obtenerprecioTotal() / kilosTotal;
+        return precioMedio;
+    }
 }
 //Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
 function recogidaResultados() {
-    //let arrayContadorString=arrayFrutas.map(palabra=>palabra.toString());
     let numArray2 = arrayFrutas.map(function (elemento) {
         return elemento.nombre + " ---- " + elemento.kilos + " kilos " + " ---- " + elemento.precioKilo + " €/kg " + (elemento.precioKilo * elemento.kilos) + " € "
     });
