@@ -83,7 +83,10 @@ function obtenerprecioTotal() {
 y de los kilos que se obtienen en la misma se incluye el error de la posibilidad de dividir entre 0 
 si no  se han agregado kilos de fruta */
 function precioMedio() {
-    let kilosTotal = arrayFrutas.reduce((kiloTot,kiloAc)=>kiloTot + kiloAc);
+    let valorIn=0;
+    let kilosTotal = arrayFrutas.reduce(function(kiloTo,kiloAct){
+        return kiloTo + kiloAct.kilos
+    },valorIn);
     if (kilosTotal == 0) {
         throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
     }else{
@@ -107,10 +110,10 @@ al usar la funcion del precioMedio */
 function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
-        var texto = document.createTextNode(recogidaResultados() + "\n");
-        var texto2 = document.createTextNode("Precio total : " + obtenerprecioTotal() + " €" + "\n");
-        var texto3 = document.createTextNode("Precio medio : " + precioMedio() + " €/kg " + "\n")
-        areaTexto.appendChild(texto);
+        //var texto = document.createTextNode(recogidaResultados() + "\n");
+        var texto2 = document.createTextNode("Precio total : " + Math.floor(obtenerprecioTotal()).toFixed(2) + " €" + "\n");
+        var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n")
+       // areaTexto.appendChild(texto);
         areaTexto.appendChild(texto2);
         areaTexto.appendChild(texto3);
     } catch (error) {
