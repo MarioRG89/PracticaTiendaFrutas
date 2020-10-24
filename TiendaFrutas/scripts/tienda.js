@@ -1,5 +1,6 @@
 //Variable globales para manejar los arrays en la diferentes funciones
 var arrayFrutas = [];
+var fechaActual = new Date();
 // Definicio de la clase Fruta
 class Fruta {
     constructor(nombre, kilos, precioKilo) {
@@ -87,9 +88,9 @@ function precioMedio() {
     let kilosTotal = arrayFrutas.reduce(function (kiloTo, kiloAct) {
         return kiloTo + kiloAct.kilos
     }, valorIn);
-    if(kilosTotal==0){
+    if (kilosTotal == 0) {
         throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
-    }else{
+    } else {
         let precioMedio = obtenerprecioTotal() / kilosTotal;
         return precioMedio;
     }
@@ -109,9 +110,11 @@ al usar la funcion del precioMedio */
 function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
+        var fecha = document.createTextNode("Fecha de compra : " + fechaActual.getDay() + "/" + fechaActual.getMonth() + "/" + fechaActual.getFullYear() + " " + fechaActual.getHours() + ":" + fechaActual.getMinutes() + "\n");
         var texto = document.createTextNode(recogidaResultados() + "\n");
         var texto2 = document.createTextNode("Precio total : " + Math.floor(obtenerprecioTotal()).toFixed(2) + " €" + "\n");
         var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n")
+        areaTexto.appendChild(fecha)
         areaTexto.appendChild(texto);
         areaTexto.appendChild(texto2);
         areaTexto.appendChild(texto3);
