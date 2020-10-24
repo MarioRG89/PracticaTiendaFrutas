@@ -2,45 +2,66 @@
 var arrayFrutasContador = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var arrayFrutasPrecio = [13.4, 3.75, 1.75, 2.69, 0.75, 2.16, 1.60, 2.15, 2.75, 1.75];
 var arrayFrutasNombres = ["Arandanos", "Fresa", "ManzanaR", "ManzanaV", "Melon", "Naranja", "Pera", "Platano", "Sandia", "Uvas"];
+// Definicio de la clase Fruta
+class Fruta{
+    constructor(nombre,kilos,precioKilo){
+        this.nombre=nombre;
+        this.kilos=kilos;
+        this.precioKilo=precioKilo;
+    }
+    getDatos=()=> "Los kilos seleccionados de " + this.nombre + " son " + this.kilos + " al precio el kilo de " + this.precioKilo;
+}
+
+
 //funcion para la suma de la fruta arandano cada vez que pincha imagen
 function sumaFrutaArandano() {
-    arrayFrutasContador[0]++;
+    let arandano= new Fruta("arandano",Number(prompt("¿cuantos kilos quiere ?")),13.4);
+    console.log(arandano.getDatos());
 }
 //funcion para la suma de la fruta fresa cada vez que pincha imagen
 function sumaFrutaFresa() {
-    arrayFrutasContador[1]++;
+   let fresa= new Fruta("Fresa",Number(prompt("¿cuantos kilos quiere ?")),3.75);
+   console.log(fresa.getDatos());
 }
 //funcion para la suma de la fruta manzana roja cada vez que pincha imagen
 function sumaFrutaManzanaR() {
-    arrayFrutasContador[2]++;
+    let manzanaR= new Fruta("Manzana Verde",Number(prompt("¿cuantos kilos quiere ?")),1.75);
+   console.log(manzanaR.getDatos());
 }
 //funcion para la suma de la fruta manzana verde cada vez que pincha imagen
 function sumaFrutaManzanaV() {
-    arrayFrutasContador[3]++;
+    let manzanaV= new Fruta("Manzana Roja",Number(prompt("¿cuantos kilos quiere ?")),2.69);
+   console.log(manzanaV.getDatos());
 }
 //funcion para la suma de la fruta melon cada vez que pincha imagen
-function sumaFrutaMelon() {
-    arrayFrutasContador[4]++;
+function sumaFrutaMelon() {s
+    let melon= new Fruta("Melon",Number(prompt("¿cuantos kilos quiere ?")),0.75);
+   console.log(melon.getDatos());
 }
 //funcion para la suma de la fruta naranja cada vez que pincha imagen
 function sumaFrutaNaranja() {
-    arrayFrutasContador[5]++;
+    let naranja= new Fruta("Naranja",Number(prompt("¿cuantos kilos quiere ?")),2.16);
+    console.log(naranja.getDatos());
 }
 //funcion para la suma de la fruta pera cada vez que pincha imagen
 function sumaFrutaPera() {
-    arrayFrutasContador[6]++;
+    let pera= new Fruta("Pera",Number(prompt("¿cuantos kilos quiere ?")),1.60);
+    console.log(pera.getDatos());
 }
 //funcion para la suma de la fruta platano cada vez que pincha imagen
 function sumaFrutaPlatano() {
-    arrayFrutasContador[7]++;
+    let platano= new Fruta("Platano",Number(prompt("¿cuantos kilos quiere ?")),2.15);
+   console.log(platano.getDatos());
 }
 //funcion para la suma de la fruta sandia cada vez que pincha imagen
 function sumaFrutaSandia() {
-    arrayFrutasContador[8]++;
+    let sandia= new Fruta("Sandia",Number(prompt("¿cuantos kilos quiere ?")),2.75);
+   console.log(sandia.getDatos());
 }
 //funcion para la suma de la fruta uva cada vez que pincha imagen
 function sumaFrutaUva() {
-    arrayFrutasContador[9]++;
+    let uvas= new Fruta("Uvas",Number(prompt("¿cuantos kilos quiere ?")),1.75);
+   console.log(uvas.getDatos());
 }
 //funcion que calcula el precio total a partir de los arrays de  precios y el contador kilos y devuelve el precioTotal que es la suma de los kg de fruta por su precio
 
