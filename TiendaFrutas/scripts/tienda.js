@@ -104,6 +104,7 @@ function recogidaResultados() {
     let resultado = numArray2.join("\n");
     return resultado;
 }
+//Funcion que ordena y recoge los datos de las frutas de verano e invierno
 function tipoFruta(){
     var textoFrutas="";
     arrayFrutas.sort(function (a, b){
