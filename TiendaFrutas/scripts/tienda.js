@@ -16,56 +16,56 @@ class FrutaVerano extends Fruta {
         this.proximidad = proximidad;
         this.region = region;
     }
-    getDatos = () => this.nombre + " es una fruta de verano " + " de " + this.proximidad + " estan recogida en " + this.region;
+    getDatos2 = () => this.nombre + " es una fruta de verano " + " de " + this.proximidad + " estan recogida en " + this.region;
 }
 class FrutaInvierno extends Fruta {
     constructor(nombre, kilo, precioKilo, conservacion) {
         super(nombre, kilo, precioKilo);
         this.conservacion = conservacion;
     }
-    getDatos = () => this.nombre + " es una fruta de invierno " + " y es recomendable conservalas  " + this.conservacion + " de la nevera ";
+    getDatos2 = () => this.nombre + " es una fruta de invierno " + " y es recomendable conservalas  " + this.conservacion + " de la nevera ";
 }
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta(nombre) {
     switch (nombre) {
         case "arandano":
-            let arandano = new Fruta("Arandanos", Number(prompt("¿cuantos kilos quiere ?")), 13.4);
+            let arandano = new FrutaVerano("Arandanos", Number(prompt("¿cuantos kilos quiere ?")), 13.4,"proximidad","Asturias");
             arrayFrutas.push(arandano);
             break;
         case "fresa":
-            let fresa = new Fruta("Fresa", Number(prompt("¿cuantos kilos quiere ?")), 3.75);
+            let fresa = new FrutaVerano("Fresas", Number(prompt("¿cuantos kilos quiere ?")), 3.75,"proximidad","Asturias");
             arrayFrutas.push(fresa);
             break;
         case "manzanaR":
-            let manzanaR = new Fruta("Manzana Verde", Number(prompt("¿cuantos kilos quiere ?")), 1.75);
+            let manzanaR = new FrutaInvierno("Manzanas Verde", Number(prompt("¿cuantos kilos quiere ?")), 1.75,"fuera");
             arrayFrutas.push(manzanaR);
             break;
         case "manzanaV":
-            let manzanaV = new Fruta("Manzana Roja", Number(prompt("¿cuantos kilos quiere ?")), 2.69);
+            let manzanaV = new FrutaInvierno("Manzanas Roja", Number(prompt("¿cuantos kilos quiere ?")), 2.69,"fuera");
             arrayFrutas.push(manzanaV);
             break;
         case "melon":
-            let melon = new Fruta("Melon", Number(prompt("¿cuantos kilos quiere ?")), 0.75);
+            let melon = new FrutaVerano("Melones", Number(prompt("¿cuantos kilos quiere ?")), 0.75,"proximidad","Villaconejo");
             arrayFrutas.push(melon);
             break;
         case "naranja":
-            let naranja = new Fruta("Naranja", Number(prompt("¿cuantos kilos quiere ?")), 2.16);
+            let naranja = new FrutaInvierno("Naranjas", Number(prompt("¿cuantos kilos quiere ?")), 2.16,"fuera");
             arrayFrutas.push(naranja);
             break;
         case "pera":
-            let pera = new Fruta("Pera", Number(prompt("¿cuantos kilos quiere ?")), 1.60);
+            let pera = new FrutaInvierno("Peras", Number(prompt("¿cuantos kilos quiere ?")), 1.60,"dentro");
             arrayFrutas.push(pera);
             break;
         case "platano":
-            let platano = new Fruta("Platano", Number(prompt("¿cuantos kilos quiere ?")), 2.15);
+            let platano = new FrutaInvierno("Platanos", Number(prompt("¿cuantos kilos quiere ?")), 2.15,"fuera");
             arrayFrutas.push(platano);
             break;
         case "sandia":
-            let sandia = new Fruta("Sandia", Number(prompt("¿cuantos kilos quiere ?")), 2.75);
+            let sandia = new FrutaVerano("Sandias", Number(prompt("¿cuantos kilos quiere ?")), 2.75,"proximidad","Murcia");
             arrayFrutas.push(sandia);
             break;
         case "uvas":
-            let uvas = new Fruta("Uvas", Number(prompt("¿cuantos kilos quiere ?")), 1.75);
+            let uvas = new FrutaInvierno("Uvas", Number(prompt("¿cuantos kilos quiere ?")), 1.75,"dentro");
             arrayFrutas.push(uvas);
             break;
     }
@@ -104,11 +104,28 @@ function recogidaResultados() {
     let resultado = numArray2.join("\n");
     return resultado;
 }
+function tipoFruta(){
+    var textoFrutas="";
+    arrayFrutas.sort(function (a, b){
+        if(a.nombre>b.nombre){
+            return -1;
+        }else{
+            return 1;
+        }
+    });
+    arrayFrutas.forEach(frutas => {
+        if(frutas.kilos>=1){
+          textoFrutas= frutas.getDatos2() + "\n" + textoFrutas ;
+        }
+    });
+    return textoFrutas;
+}
 /*Funcion para mostrar los datos que se han recogido y se mostrara en la pagina en el area de texto, tambien se maneja el posible error
 al usar la funcion del precioMedio */
 function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
+        alert(tipoFruta());
         var fecha = document.createTextNode("Fecha de compra : " + fechaActual.getDay() + "/" + fechaActual.getMonth() + "/" + fechaActual.getFullYear() + " " + fechaActual.getHours() + ":" + fechaActual.getMinutes() + "\n");
         var texto = document.createTextNode(recogidaResultados() + "\n");
         var texto2 = document.createTextNode("Precio total : " + Math.floor(obtenerprecioTotal()).toFixed(2) + " €" + "\n");
