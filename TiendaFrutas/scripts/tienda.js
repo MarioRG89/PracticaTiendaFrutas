@@ -16,14 +16,14 @@ class FrutaVerano extends Fruta {
         this.proximidad = proximidad;
         this.region = region;
     }
-    getDatos2 = () => this.nombre + " es una fruta de verano " + " de " + this.proximidad + " estan recogida en " + this.region;
+    getDatos2 = () =>" Las/os " + this.nombre + " es una fruta de verano " + " de " + this.proximidad + " estan recogida en " + this.region;
 }
 class FrutaInvierno extends Fruta {
     constructor(nombre, kilo, precioKilo, conservacion) {
         super(nombre, kilo, precioKilo);
         this.conservacion = conservacion;
     }
-    getDatos2 = () => this.nombre + " es una fruta de invierno " + " y es recomendable conservalas  " + this.conservacion + " de la nevera ";
+    getDatos2 = () =>" Las/os " + this.nombre + " es una fruta de invierno " + " y es recomendable conservalas  " + this.conservacion + " de la nevera ";
 }
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta(nombre) {
