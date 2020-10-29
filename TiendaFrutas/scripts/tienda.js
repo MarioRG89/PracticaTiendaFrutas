@@ -1,5 +1,4 @@
-//Variable globales para manejar los arrays en la diferentes funciones
-
+//Variable global fecha
 var fechaActual = new Date();
 // Definicion de la clase Fruta y las clase fruta verano e invierno hija de la clase fruta
 class Fruta {
@@ -36,6 +35,7 @@ let pera = new FrutaInvierno("Peras", 0, 1.60,"dentro");
 let platano = new FrutaInvierno("Platanos", 0, 2.15,"fuera");
 let sandia = new FrutaVerano("Sandias", 0, 2.75,"proximidad","Murcia");
 let uvas = new FrutaInvierno("Uvas",0, 1.75,"dentro");
+//Array que contiene los objetos fruta
 var arrayFrutas = [arandano,fresa,manzanaR,manzanaV,melon,naranja,pera,platano,sandia,uvas];
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta(nombre) {
@@ -108,13 +108,22 @@ function precioMedio() {
 }
 //Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
 function recogidaResultados() {
-    let numArray2 = arrayFrutas.map(function (elemento) {
-        return elemento.getDatos()
+    var textoFrutasPrecios="";
+    arrayFrutas.sort(function (a, b){
+        if(a.nombre>b.nombre){
+            return 1;
+        }else{
+            return -1;
+        }
     });
-    numArray2.sort();
-    numArray2.reverse();
-    let resultado = numArray2.join("\n");
-    return resultado;
+    arrayFrutas.forEach(frutas => {
+        if(frutas.kilos>0){
+            textoFrutasPrecios= frutas.getDatos() + "\n" + textoFrutasPrecios ;
+        }
+    });
+   
+   
+    return textoFrutasPrecios;
 }
 //Funcion que ordena y recoge los datos de las frutas de verano e invierno
 function tipoFruta(){
@@ -127,7 +136,7 @@ function tipoFruta(){
         }
     });
     arrayFrutas.forEach(frutas => {
-        if(frutas.kilos>=1){
+        if(frutas.kilos>0){
           textoFrutas= frutas.getDatos2() + "\n" + textoFrutas ;
         }
     });
