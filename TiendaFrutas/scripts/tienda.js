@@ -26,7 +26,7 @@ class FrutaInvierno extends Fruta {
 }
 //Objetos de cada fruta
 let arandano = new FrutaVerano("Arandanos",0, 13.4,"proximidad","Asturias");
-let fresa = new FrutaVerano("Fresas",0, 3.75,"proximidad","Asturias");
+let fresa = new FrutaVerano("Fresas",0, 3.75,"proximidad","Huelva");
 let manzanaR = new FrutaInvierno("Manzanas Roja", 0, 1.75,"fuera");
 let manzanaV = new FrutaInvierno("Manzanas Verde", 0, 2.69,"fuera");
 let melon = new FrutaVerano("Melones", 0, 0.75,"proximidad","Villaconejo");
@@ -148,7 +148,7 @@ function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
         alert(tipoFruta());
-        var fecha = document.createTextNode("Fecha de compra : " + fechaActual.getDay() + "/" + fechaActual.getMonth() + "/" + fechaActual.getFullYear() + " " + fechaActual.getHours() + ":" + fechaActual.getMinutes() + "\n");
+        var fecha = document.createTextNode("Fecha de compra : " + fechaActual.toLocaleString() + "\n");
         var texto = document.createTextNode(recogidaResultados() + "\n");
         var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal()*100)/100).toFixed(2) + " €" + "\n");
         var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n")
