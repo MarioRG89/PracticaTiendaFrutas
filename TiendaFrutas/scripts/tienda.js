@@ -1,5 +1,5 @@
 //Variable globales para manejar los arrays en la diferentes funciones
-var arrayFrutas = [];
+
 var fechaActual = new Date();
 // Definicion de la clase Fruta y las clase fruta verano e invierno hija de la clase fruta
 class Fruta {
@@ -8,7 +8,7 @@ class Fruta {
         this.kilos = kilos;
         this.precioKilo = precioKilo;
     }
-    getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos).toFixed(2) + " € "
+    getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos) + " € "
 }
 class FrutaVerano extends Fruta {
     constructor(nombre, kilo, precioKilo, proximidad, region) {
@@ -25,48 +25,60 @@ class FrutaInvierno extends Fruta {
     }
     getDatos2 = () =>" Las/os " + this.nombre + " es una fruta de invierno " + " y es recomendable conservalas  " + this.conservacion + " de la nevera ";
 }
+//Objetos de cada fruta
+let arandano = new FrutaVerano("Arandanos",0, 13.4,"proximidad","Asturias");
+let fresa = new FrutaVerano("Fresas",0, 3.75,"proximidad","Asturias");
+let manzanaR = new FrutaInvierno("Manzanas Roja", 0, 1.75,"fuera");
+let manzanaV = new FrutaInvierno("Manzanas Verde", 0, 2.69,"fuera");
+let melon = new FrutaVerano("Melones", 0, 0.75,"proximidad","Villaconejo");
+let naranja = new FrutaInvierno("Naranjas", 0, 2.16,"fuera");
+let pera = new FrutaInvierno("Peras", 0, 1.60,"dentro");
+let platano = new FrutaInvierno("Platanos", 0, 2.15,"fuera");
+let sandia = new FrutaVerano("Sandias", 0, 2.75,"proximidad","Murcia");
+let uvas = new FrutaInvierno("Uvas",0, 1.75,"dentro");
+var arrayFrutas = [arandano,fresa,manzanaR,manzanaV,melon,naranja,pera,platano,sandia,uvas];
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta(nombre) {
     switch (nombre) {
-        case "arandano":
-            let arandano = new FrutaVerano("Arandanos", Number(prompt("¿cuantos kilos quiere ?")), 13.4,"proximidad","Asturias");
-            arrayFrutas.push(arandano);
+        case "arandano": 
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            arandano.kilos=kilos + arandano.kilos
             break;
         case "fresa":
-            let fresa = new FrutaVerano("Fresas", Number(prompt("¿cuantos kilos quiere ?")), 3.75,"proximidad","Asturias");
-            arrayFrutas.push(fresa);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            fresa.kilos=kilos + fresa.kilos
             break;
         case "manzanaR":
-            let manzanaR = new FrutaInvierno("Manzanas Verde", Number(prompt("¿cuantos kilos quiere ?")), 1.75,"fuera");
-            arrayFrutas.push(manzanaR);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            manzanaR.kilos=kilos + manzanaR.kilos
             break;
         case "manzanaV":
-            let manzanaV = new FrutaInvierno("Manzanas Roja", Number(prompt("¿cuantos kilos quiere ?")), 2.69,"fuera");
-            arrayFrutas.push(manzanaV);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            manzanaV.kilos=kilos +manzanaV.kilos
             break;
         case "melon":
-            let melon = new FrutaVerano("Melones", Number(prompt("¿cuantos kilos quiere ?")), 0.75,"proximidad","Villaconejo");
-            arrayFrutas.push(melon);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            melon.kilos=kilos +melon.kilos
             break;
         case "naranja":
-            let naranja = new FrutaInvierno("Naranjas", Number(prompt("¿cuantos kilos quiere ?")), 2.16,"fuera");
-            arrayFrutas.push(naranja);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            naranja.kilos= kilos + naranja.kilos
             break;
         case "pera":
-            let pera = new FrutaInvierno("Peras", Number(prompt("¿cuantos kilos quiere ?")), 1.60,"dentro");
-            arrayFrutas.push(pera);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            pera.kilos=kilos + pera.kilos
             break;
         case "platano":
-            let platano = new FrutaInvierno("Platanos", Number(prompt("¿cuantos kilos quiere ?")), 2.15,"fuera");
-            arrayFrutas.push(platano);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            platano.kilos= kilos + platano.kilos
             break;
         case "sandia":
-            let sandia = new FrutaVerano("Sandias", Number(prompt("¿cuantos kilos quiere ?")), 2.75,"proximidad","Murcia");
-            arrayFrutas.push(sandia);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            sandia.kilos= kilos + sandia.kilos
             break;
         case "uvas":
-            let uvas = new FrutaInvierno("Uvas", Number(prompt("¿cuantos kilos quiere ?")), 1.75,"dentro");
-            arrayFrutas.push(uvas);
+            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            uvas.kilos= kilos + uvas.kilos
             break;
     }
 }
@@ -129,7 +141,7 @@ function mostrarResultados() {
         alert(tipoFruta());
         var fecha = document.createTextNode("Fecha de compra : " + fechaActual.getDay() + "/" + fechaActual.getMonth() + "/" + fechaActual.getFullYear() + " " + fechaActual.getHours() + ":" + fechaActual.getMinutes() + "\n");
         var texto = document.createTextNode(recogidaResultados() + "\n");
-        var texto2 = document.createTextNode("Precio total : " + Math.floor(obtenerprecioTotal()).toFixed(2) + " €" + "\n");
+        var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal()*100)/100).toFixed(2) + " €" + "\n");
         var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n")
         areaTexto.appendChild(fecha)
         areaTexto.appendChild(texto);
