@@ -159,7 +159,7 @@ function tipoFruta() {
     });
     return textoFrutas;
 }
-//funcion añadir texto al div que esta en la derecha
+//funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden
 function anadirtextoDiv(nomFruta, nombre) {
     if (nomFruta.kilos >= 1) {
         let kiloFruta=document.getElementById(nombre + "kilos").value;
