@@ -8,7 +8,7 @@ class Fruta {
         this.precioKilo = precioKilo;
     }
     getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos) + " € "
-    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre + "\n"
+    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre 
 }
 class FrutaVerano extends Fruta {
     constructor(nombre, kilo, precioKilo, proximidad, region) {
@@ -42,7 +42,7 @@ var arrayFrutas = [arandano, fresa, manzanaR, manzanaV, melon, naranja, pera, pl
 function sumaFruta(nombre) {
     switch (nombre) {
         case "arandano":
-            kilos = Number(document.getElementById("arandanoskilos").value)
+            kilos = Number(document.getElementById("arandanokilos").value)
             arandano.kilos = kilos + arandano.kilos
             anadirtextoDiv(arandano, "arandano")
             break;
@@ -162,9 +162,10 @@ function tipoFruta() {
 //funcion añadir texto al div que esta en la derecha
 function anadirtextoDiv(nomFruta, nombre) {
     if (nomFruta.kilos >= 1) {
-        let divTexto = document.getElementById("contenedorDerecha");;
+        let kiloFruta=document.getElementById(nombre + "kilos").value;
+        let divTexto = document.getElementById("contenedorDerecha");
         let parrafoTexto = document.createElement("p");
-        let nodoTexto = document.createTextNode(nomFruta.getDatosDiv());
+        let nodoTexto = document.createTextNode("Se añaden " + kiloFruta  + " kilos  de " + nomFruta.nombre );
         divTexto.appendChild(parrafoTexto)
         parrafoTexto.className = nombre;
         parrafoTexto.appendChild(nodoTexto);
@@ -177,7 +178,7 @@ function anadirtextoDiv(nomFruta, nombre) {
             }
         }
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
-            const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
+             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
             if (elemento.getAttribute("class").includes(nombre) && !elemento.getAttribute("class").includes("activa")) {
                 elemento.className += " activa";
             }
