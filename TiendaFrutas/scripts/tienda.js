@@ -41,43 +41,43 @@ var arrayFrutas = [arandano,fresa,manzanaR,manzanaV,melon,naranja,pera,platano,s
 function sumaFruta(nombre) {
     switch (nombre) {
         case "arandano": 
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("arandanoskilos").value)
             arandano.kilos=kilos + arandano.kilos
             break;
         case "fresa":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("fresakilos").value)
             fresa.kilos=kilos + fresa.kilos
             break;
         case "manzanaR":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos=kilos + manzanaR.kilos
             break;
         case "manzanaV":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("manzanaVkilos").value)
             manzanaV.kilos=kilos +manzanaV.kilos
             break;
         case "melon":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("melonkilos").value)
             melon.kilos=kilos +melon.kilos
             break;
         case "naranja":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("naranjakilos").value)
             naranja.kilos= kilos + naranja.kilos
             break;
         case "pera":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("perakilos").value)
             pera.kilos=kilos + pera.kilos
             break;
         case "platano":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("platanokilos").value)
             platano.kilos= kilos + platano.kilos
             break;
         case "sandia":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("sandiakilos").value)
             sandia.kilos= kilos + sandia.kilos
             break;
         case "uvas":
-            kilos=Number(prompt("¿cuantos kilos quieres?"))
+            kilos=Number(document.getElementById("uvaskilos").value)
             uvas.kilos= kilos + uvas.kilos
             break;
     }
