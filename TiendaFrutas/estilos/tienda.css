@@ -15,7 +15,6 @@ h1{
     float: right;
     width: 25%;
     height: 100%;
-    border: 2px solid black;
     overflow: hidden;
     margin-top: 80px;
     text-align: center;
@@ -28,10 +27,10 @@ h1{
     text-align: center;
     overflow: hidden;
 }
-.parrafoFruta{
-    text-decoration: underline;
-    color: blue;
+.activa{
+    color: red;
 }
-.parrafoFrutaUltimahijo{
-    text-decoration: none;
+
+.parrafoFruta{
+   color: black;
 }

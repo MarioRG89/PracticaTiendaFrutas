@@ -8,7 +8,7 @@ class Fruta {
         this.precioKilo = precioKilo;
     }
     getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos) + " € "
-    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre +"\n"
+    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre + "\n"
 }
 class FrutaVerano extends Fruta {
     constructor(nombre, kilo, precioKilo, proximidad, region) {
@@ -44,62 +44,60 @@ function sumaFruta(nombre) {
         case "arandano":
             kilos = Number(document.getElementById("arandanoskilos").value)
             arandano.kilos = kilos + arandano.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(arandano)
+            anadirtextoDiv(arandano, "arandano")
             break;
         case "fresa":
             kilos = Number(document.getElementById("fresakilos").value)
             fresa.kilos = kilos + fresa.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(fresa)
+            anadirtextoDiv(fresa, "fresa")
             break;
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(manzanaR)
+            // document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
+            anadirtextoDiv(manzanaR, "manzanaR")
             break;
         case "manzanaV":
             kilos = Number(document.getElementById("manzanaVkilos").value)
             manzanaV.kilos = kilos + manzanaV.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(manzanaV)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(manzanaV, "manzanaV")
             break;
         case "melon":
             kilos = Number(document.getElementById("melonkilos").value)
             melon.kilos = kilos + melon.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(melon)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(melon, "melon")
             break;
         case "naranja":
             kilos = Number(document.getElementById("naranjakilos").value)
             naranja.kilos = kilos + naranja.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(naranja)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(naranja, "naranja")
             break;
         case "pera":
             kilos = Number(document.getElementById("perakilos").value)
             pera.kilos = kilos + pera.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(pera)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(pera, "pera")
             break;
         case "platano":
             kilos = Number(document.getElementById("platanokilos").value)
             platano.kilos = kilos + platano.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(platano)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(platano, "platano")
             break;
         case "sandia":
             kilos = Number(document.getElementById("sandiakilos").value)
             sandia.kilos = kilos + sandia.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(sandia)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(sandia, "sandia")
             break;
         case "uvas":
             kilos = Number(document.getElementById("uvaskilos").value)
             uvas.kilos = kilos + uvas.kilos
-            document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(uvas)
+            document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
+            anadirtextoDiv(uvas, "uvas")
             break;
     }
 }
@@ -142,8 +140,6 @@ function recogidaResultados() {
             textoFrutasPrecios = frutas.getDatos() + "\n" + textoFrutasPrecios;
         }
     });
-
-
     return textoFrutasPrecios;
 }
 //Funcion que ordena y recoge los datos de las frutas de verano e invierno
@@ -164,17 +160,29 @@ function tipoFruta() {
     return textoFrutas;
 }
 //funcion añadir texto al div que esta en la derecha
-function anadirtextoDiv(nomFruta) {
-    let divTexto = document.getElementById("contenedorDerecha");
-    let parrafoTexto= document.createElement("p");
-    let nodoTexto = document.createTextNode(nomFruta.getDatosDiv());
-    divTexto.appendChild(parrafoTexto)
+function anadirtextoDiv(nomFruta, nombre) {
     if (nomFruta.kilos >= 1) {
-        parrafoTexto.className="parrafoFruta";
+        let divTexto = document.getElementById("contenedorDerecha");;
+        let parrafoTexto = document.createElement("p");
+        let nodoTexto = document.createTextNode(nomFruta.getDatosDiv());
+        divTexto.appendChild(parrafoTexto)
+        parrafoTexto.className = nombre;
         parrafoTexto.appendChild(nodoTexto);
-      
+
+        for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
+            const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
+            if (elemento.getAttribute("class").includes("activa")) {
+                let textop = elemento.getAttribute("class");
+                elemento.className = textop.replace("activa", "");
+            }
+        }
+        for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
+            const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
+            if (elemento.getAttribute("class").includes(nombre) && !elemento.getAttribute("class").includes("activa")) {
+                elemento.className += " activa";
+            }
+        }
     }
-   
 }
 /*Funcion para mostrar los datos que se han recogido y se mostrara en la pagina en el area de texto, tambien se maneja el posible error
 al usar la funcion del precioMedio */
