@@ -83,7 +83,7 @@ function sumaFruta(nombre) {
     }
 }
 
-//funcion que calcula el precio total a partir de los arrays de  precios y el contador kilos y devuelve el precioTotal que es la suma de los kg de fruta por su precio
+//funcion que calcula el precio total a partir del array de objetos fruta  y devuelve el precioTotal que es la suma de los kg de fruta por su precio
 
 function obtenerprecioTotal() {
     let arrayPrecio = arrayFrutas.map((elemento) =>
@@ -106,7 +106,7 @@ function precioMedio() {
         return precioMedio;
     }
 }
-//Obtencion de datos a partir de los array globales en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
+//Obtencion de datos a partir del array de objetos fruta  en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
 function recogidaResultados() {
     var textoFrutasPrecios="";
     arrayFrutas.sort(function (a, b){
