@@ -169,7 +169,7 @@ function anadirtextoDiv(nomFruta, nombre) {
         divTexto.appendChild(parrafoTexto)
         parrafoTexto.className = nombre;
         parrafoTexto.appendChild(nodoTexto);
-
+        //bucle para comprobar si tiene la clase activa(da color al texto) y remplazar para que la clase activa no se repita
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
             if (elemento.getAttribute("class").includes("activa")) {
@@ -177,6 +177,7 @@ function anadirtextoDiv(nomFruta, nombre) {
                 elemento.className = textop.replace("activa", "");
             }
         }
+        //bucle para añadir la clase activa a los parrafos que tengan la misma clase y asi cambiar el color del texto
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
              const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
             if (elemento.getAttribute("class").includes(nombre) && !elemento.getAttribute("class").includes("activa")) {
