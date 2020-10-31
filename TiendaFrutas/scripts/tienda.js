@@ -166,7 +166,7 @@ function anadirtextoDiv(nomFruta, nombre) {
         let divTexto = document.getElementById("contenedorDerecha");
         let parrafoTexto = document.createElement("p");
         let nodoTexto = document.createTextNode("Se añaden " + kiloFruta + " kilos  de " + nomFruta.nombre);
-        divTexto.appendChild(parrafoTexto)
+        divTexto.appendChild(parrafoTexto);
         parrafoTexto.className = nombre;
         parrafoTexto.appendChild(nodoTexto);
         //bucle para comprobar si tiene la clase activa(da color al texto) y remplazar para que la clase activa no se repita
@@ -191,28 +191,33 @@ al usar la funcion del precioMedio */
 function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
-        alert(tipoFruta());
+        setTimeout(function() {
+            alert(tipoFruta());
+            }, 2000);
         var fecha = document.createTextNode("Fecha de compra : " + fechaActual.toLocaleString() + "\n");
         var texto = document.createTextNode(recogidaResultados() + "\n");
         var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "\n");
-        var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n")
-        areaTexto.appendChild(fecha)
+        var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n");
+        areaTexto.appendChild(fecha);
         areaTexto.appendChild(texto);
         areaTexto.appendChild(texto2);
         areaTexto.appendChild(texto3);
-        limpiarTodo()
+        limpiarTodo();
     } catch (error) {
         console.error(error);
     }
 }
-//funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10 segundoss
+//funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10
 function limpiarTodo() {
     setTimeout(function () {
         let div = document.querySelectorAll("#contenedorDerecha p");
+        //limpia bloque derecho
         for (let i = 0; i < div.length; i++) {
             div[i].remove();
         }
+        //limpia el area de texto
         document.getElementById("areaTexto").innerHTML = "";
+        //pone la varible kilo de cada fruta a cero
         arrayFrutas.forEach(frutas => {
             frutas.kilos = 0;
         });
