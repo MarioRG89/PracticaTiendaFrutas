@@ -8,7 +8,7 @@ class Fruta {
         this.precioKilo = precioKilo;
     }
     getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos) + " € "
-    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre 
+    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre
 }
 class FrutaVerano extends Fruta {
     constructor(nombre, kilo, precioKilo, proximidad, region) {
@@ -162,10 +162,10 @@ function tipoFruta() {
 //funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden
 function anadirtextoDiv(nomFruta, nombre) {
     if (nomFruta.kilos >= 1) {
-        let kiloFruta=document.getElementById(nombre + "kilos").value;
+        let kiloFruta = document.getElementById(nombre + "kilos").value;
         let divTexto = document.getElementById("contenedorDerecha");
         let parrafoTexto = document.createElement("p");
-        let nodoTexto = document.createTextNode("Se añaden " + kiloFruta  + " kilos  de " + nomFruta.nombre );
+        let nodoTexto = document.createTextNode("Se añaden " + kiloFruta + " kilos  de " + nomFruta.nombre);
         divTexto.appendChild(parrafoTexto)
         parrafoTexto.className = nombre;
         parrafoTexto.appendChild(nodoTexto);
@@ -179,7 +179,7 @@ function anadirtextoDiv(nomFruta, nombre) {
         }
         //bucle para añadir la clase activa a los parrafos que tengan la misma clase y asi cambiar el color del texto
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
-             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
+            const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
             if (elemento.getAttribute("class").includes(nombre) && !elemento.getAttribute("class").includes("activa")) {
                 elemento.className += " activa";
             }
@@ -200,7 +200,22 @@ function mostrarResultados() {
         areaTexto.appendChild(texto);
         areaTexto.appendChild(texto2);
         areaTexto.appendChild(texto3);
+        limpiarTodo()
     } catch (error) {
         console.error(error);
     }
+}
+//funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10 segundoss
+function limpiarTodo() {
+    setTimeout(function () {
+        let div = document.querySelectorAll("#contenedorDerecha p");
+        for (let i = 0; i < div.length; i++) {
+            div[i].remove();
+        }
+        document.getElementById("areaTexto").innerHTML = "";
+        arrayFrutas.forEach(frutas => {
+            frutas.kilos = 0;
+        });
+        ;
+    }, 10000);
 }
