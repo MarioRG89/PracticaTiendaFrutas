@@ -44,60 +44,60 @@ function sumaFruta(nombre) {
         case "arandano":
             kilos = Number(document.getElementById("arandanokilos").value)
             arandano.kilos = kilos + arandano.kilos
-            anadirtextoDiv(arandano, "arandano")
+            anadirtextoDiv(arandano, nombre)
             break;
         case "fresa":
             kilos = Number(document.getElementById("fresakilos").value)
             fresa.kilos = kilos + fresa.kilos
-            anadirtextoDiv(fresa, "fresa")
+            anadirtextoDiv(fresa, nombre)
             break;
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
             // document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
-            anadirtextoDiv(manzanaR, "manzanaR")
+            anadirtextoDiv(manzanaR,nombre)
             break;
         case "manzanaV":
             kilos = Number(document.getElementById("manzanaVkilos").value)
             manzanaV.kilos = kilos + manzanaV.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(manzanaV, "manzanaV")
+            anadirtextoDiv(manzanaV,nombre)
             break;
         case "melon":
             kilos = Number(document.getElementById("melonkilos").value)
             melon.kilos = kilos + melon.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(melon, "melon")
+            anadirtextoDiv(melon, nombre)
             break;
         case "naranja":
             kilos = Number(document.getElementById("naranjakilos").value)
             naranja.kilos = kilos + naranja.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(naranja, "naranja")
+            anadirtextoDiv(naranja, nombre)
             break;
         case "pera":
             kilos = Number(document.getElementById("perakilos").value)
             pera.kilos = kilos + pera.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(pera, "pera")
+            anadirtextoDiv(pera,nombre)
             break;
         case "platano":
             kilos = Number(document.getElementById("platanokilos").value)
             platano.kilos = kilos + platano.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(platano, "platano")
+            anadirtextoDiv(platano, nombre)
             break;
         case "sandia":
             kilos = Number(document.getElementById("sandiakilos").value)
             sandia.kilos = kilos + sandia.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(sandia, "sandia")
+            anadirtextoDiv(sandia, nombre)
             break;
         case "uvas":
             kilos = Number(document.getElementById("uvaskilos").value)
             uvas.kilos = kilos + uvas.kilos
             document.getElementById("contenedorDerecha").lastChild.className = "parrafoFrutaUltimahijo"
-            anadirtextoDiv(uvas, "uvas")
+            anadirtextoDiv(uvas, nombre)
             break;
     }
 }
