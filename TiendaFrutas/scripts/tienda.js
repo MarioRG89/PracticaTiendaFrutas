@@ -8,7 +8,6 @@ class Fruta {
         this.precioKilo = precioKilo;
     }
     getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos) + " € "
-    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre
 }
 class FrutaVerano extends Fruta {
     constructor(nombre, kilo, precioKilo, proximidad, region) {
