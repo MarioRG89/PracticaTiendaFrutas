@@ -1,11 +1,7 @@
 img{
     width: 300px;
 }
-div{
-    margin-left: 20%;
-    margin-right: 20%;
-    text-align: center;
-}
+
 h1{
     text-align: center;
 }
@@ -14,4 +10,28 @@ h1{
 }
 .textoPrecio{
     font-size: larger;
+}
+#contenedorDerecha{
+    float: right;
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 80px;
+    text-align: center;
+    display: block;
+}
+#contenedorFrutas{
+    float: left;
+    width: 73%;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.activa{
+    color: red;
+}
+
+.parrafoFruta{
+   color: black;
 }
