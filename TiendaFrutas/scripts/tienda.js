@@ -8,7 +8,6 @@ class Fruta {
         this.precioKilo = precioKilo;
     }
     getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos) + " € "
-    getDatosDiv = () => "Se añaden " + this.kilos + " kilos  de " + this.nombre
 }
 class FrutaVerano extends Fruta {
     constructor(nombre, kilo, precioKilo, proximidad, region) {
@@ -44,16 +43,17 @@ function sumaFruta(nombre) {
         case "arandano":
             kilos = Number(document.getElementById("arandanokilos").value)
             arandano.kilos = kilos + arandano.kilos
-            anadirtextoDiv(arandano, "arandano")
+            anadirtextoDiv(arandano, nombre)
             break;
         case "fresa":
             kilos = Number(document.getElementById("fresakilos").value)
             fresa.kilos = kilos + fresa.kilos
-            anadirtextoDiv(fresa, "fresa")
+            anadirtextoDiv(fresa, nombre)
             break;
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
+<<<<<<< HEAD
             anadirtextoDiv(manzanaR, "manzanaR")
             break;
         case "manzanaV":
@@ -80,16 +80,52 @@ function sumaFruta(nombre) {
             kilos = Number(document.getElementById("platanokilos").value)
             platano.kilos = kilos + platano.kilos        
             anadirtextoDiv(platano, "platano")
+=======
+            anadirtextoDiv(manzanaR,nombre)
+            break;
+        case "manzanaV":
+            kilos = Number(document.getElementById("manzanaVkilos").value)
+            manzanaV.kilos = kilos + manzanaV.kilos
+            anadirtextoDiv(manzanaV,nombre)
+            break;
+        case "melon":
+            kilos = Number(document.getElementById("melonkilos").value)
+            melon.kilos = kilos + melon.kilos
+            anadirtextoDiv(melon, nombre)
+            break;
+        case "naranja":
+            kilos = Number(document.getElementById("naranjakilos").value)
+            naranja.kilos = kilos + naranja.kilos 
+            anadirtextoDiv(naranja, nombre)
+            break;
+        case "pera":
+            kilos = Number(document.getElementById("perakilos").value)
+            pera.kilos = kilos + pera.kilos      
+            anadirtextoDiv(pera,nombre)
+            break;
+        case "platano":
+            kilos = Number(document.getElementById("platanokilos").value)
+            platano.kilos = kilos + platano.kilos
+            anadirtextoDiv(platano, nombre)
+>>>>>>> desarrollo-3.0
             break;
         case "sandia":
             kilos = Number(document.getElementById("sandiakilos").value)
             sandia.kilos = kilos + sandia.kilos
+<<<<<<< HEAD
             anadirtextoDiv(sandia, "sandia")
+=======
+            anadirtextoDiv(sandia, nombre)
+>>>>>>> desarrollo-3.0
             break;
         case "uvas":
             kilos = Number(document.getElementById("uvaskilos").value)
             uvas.kilos = kilos + uvas.kilos
+<<<<<<< HEAD
             anadirtextoDiv(uvas, "uvas")
+=======
+            anadirtextoDiv(uvas, nombre)
+>>>>>>> desarrollo-3.0
             break;
     }
 }
@@ -153,8 +189,8 @@ function tipoFruta() {
 }
 //funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden
 function anadirtextoDiv(nomFruta, nombre) {
-    if (nomFruta.kilos >= 1) {
-        let kiloFruta = document.getElementById(nombre + "kilos").value;
+    let kiloFruta = document.getElementById(nombre + "kilos").value;
+    if (kiloFruta >= 1) {
         let divTexto = document.getElementById("contenedorDerecha");
         let parrafoTexto = document.createElement("p");
         let nodoTexto = document.createTextNode("Se añaden " + kiloFruta + " kilos  de " + nomFruta.nombre);
@@ -213,6 +249,5 @@ function limpiarTodo() {
         arrayFrutas.forEach(frutas => {
             frutas.kilos = 0;
         });
-        ;
     }, 10000);
 }
