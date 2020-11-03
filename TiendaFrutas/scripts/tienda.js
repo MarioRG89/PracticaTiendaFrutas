@@ -53,7 +53,6 @@ function sumaFruta(nombre) {
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
-            // document.getElementById("contenedorDerecha").lastChild.className="parrafoFrutaUltimahijo"
             anadirtextoDiv(manzanaR,nombre)
             break;
         case "manzanaV":
