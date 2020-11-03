@@ -53,34 +53,6 @@ function sumaFruta(nombre) {
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
-<<<<<<< HEAD
-            anadirtextoDiv(manzanaR, "manzanaR")
-            break;
-        case "manzanaV":
-            kilos = Number(document.getElementById("manzanaVkilos").value)
-            manzanaV.kilos = kilos + manzanaV.kilos      
-            anadirtextoDiv(manzanaV, "manzanaV")
-            break;
-        case "melon":
-            kilos = Number(document.getElementById("melonkilos").value)
-            melon.kilos = kilos + melon.kilos     
-            anadirtextoDiv(melon, "melon")
-            break;
-        case "naranja":
-            kilos = Number(document.getElementById("naranjakilos").value)
-            naranja.kilos = kilos + naranja.kilos       
-            anadirtextoDiv(naranja, "naranja")
-            break;
-        case "pera":
-            kilos = Number(document.getElementById("perakilos").value)
-            pera.kilos = kilos + pera.kilos    
-            anadirtextoDiv(pera, "pera")
-            break;
-        case "platano":
-            kilos = Number(document.getElementById("platanokilos").value)
-            platano.kilos = kilos + platano.kilos        
-            anadirtextoDiv(platano, "platano")
-=======
             anadirtextoDiv(manzanaR,nombre)
             break;
         case "manzanaV":
@@ -107,25 +79,16 @@ function sumaFruta(nombre) {
             kilos = Number(document.getElementById("platanokilos").value)
             platano.kilos = kilos + platano.kilos
             anadirtextoDiv(platano, nombre)
->>>>>>> desarrollo-3.0
             break;
         case "sandia":
             kilos = Number(document.getElementById("sandiakilos").value)
             sandia.kilos = kilos + sandia.kilos
-<<<<<<< HEAD
-            anadirtextoDiv(sandia, "sandia")
-=======
             anadirtextoDiv(sandia, nombre)
->>>>>>> desarrollo-3.0
             break;
         case "uvas":
             kilos = Number(document.getElementById("uvaskilos").value)
             uvas.kilos = kilos + uvas.kilos
-<<<<<<< HEAD
-            anadirtextoDiv(uvas, "uvas")
-=======
             anadirtextoDiv(uvas, nombre)
->>>>>>> desarrollo-3.0
             break;
     }
 }
