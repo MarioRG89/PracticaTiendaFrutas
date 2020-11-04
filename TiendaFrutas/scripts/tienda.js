@@ -145,10 +145,17 @@ function tipoFruta() {
     });
     arrayFrutas.forEach(frutas => {
         if (frutas.kilos > 0) {
-            textoFrutas = frutas.getDatos2() + "\n" + textoFrutas;
+            textoFrutas = frutas.getDatos2() + "<br>" + textoFrutas ;
+           
         }
     });
-    return textoFrutas;
+    ventana(textoFrutas);
+}
+//funcion para crear ventana,moverla y escribir en la ventana
+function ventana(texto){
+    let ventanilla=window.open("","pop-up","width=500px height=500px");
+    ventanilla.moveBy(600,300);
+    ventanilla.document.write("<p>"+ texto + "</p>");
 }
 //funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden
 function anadirtextoDiv(nomFruta, nombre) {
@@ -178,8 +185,8 @@ function mostrarResultados() {
     try {
         var areaTexto = document.getElementById("areaTexto");
         setTimeout(function() {
-            alert(tipoFruta());
-            }, 2000);
+            tipoFruta();
+            }, 1000);
         var fecha = document.createTextNode("Fecha de compra : " + fechaActual.toLocaleString() + "\n");
         var texto = document.createTextNode(recogidaResultados() + "\n");
         var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "\n");
