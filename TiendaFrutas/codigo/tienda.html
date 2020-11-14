@@ -95,12 +95,12 @@
         <div id="contenedorDerecha">
 
         </div>
-        <div id="formulario">
-            <form method="POST" action="">
+        <div id="divFormulario" >
+            <form id="formulario" method="GET" action="#">
                     <fieldset id="datos" >
                         <legend >Datos Cliente</legend>
-                        <label for="name">Nombre</label>
-                        <input type="text" name="nombre" required>
+                        <label for="name" >Nombre</label>
+                        <input type="text" name="nombre" maxlength="15" minlength="4" required>
                         <label for="apellido">Apellidos</label>
                         <input type="text" name="apellido" required><br>
                         <label for="direccion">Direccion</label>

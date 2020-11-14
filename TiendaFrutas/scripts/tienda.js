@@ -152,27 +152,12 @@ function tipoFruta() {
 }
 //funcion para crear ventana,moverla y escribir en la ventana
 function ventana() {
-    let ventanilla = window.open("", "pop-up", "width=500px height=500px");
-    ventanilla.resizeTo(500, 300);
+    let ventanilla = window.open("./emergente.html", "pop-up", "width=500px height=300px");
     try {
-        ventanilla.document.write(("Fecha de compra : " + fechaActual.toLocaleString() + "<br>"));
-        ventanilla.document.write(recogidaResultados() + "<br>");
-        ventanilla.document.write("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "<br>");
-        ventanilla.document.write("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "<br>");
-        let boton1 = document.createElement("button");
-        ventanilla.document.body.appendChild(boton1);
-        boton1.setAttribute("id", "pedido");
-        boton1.innerHTML = "Terminar Pedido";
-        let boton2 = document.createElement("button");
-        ventanilla.document.body.appendChild(boton2);
-        console.log(boton2.value);
-        boton2.setAttribute("id", "volver");
-        boton2.innerHTML = "Volver  <br>";
-        ventanilla.onload = function () {
-            ventanilla.document.getElementById("volver").addEventListener("click", function () {
-                console.log("hola");
-            }, false)
-        }
+        ventanilla.document.body.innerHTML += "<p>"(("Fecha de compra : " + fechaActual.toLocaleString() + "<br>")) + "</p>";
+        ventanilla.document.body.innerHTML += "<p>" + (recogidaResultados() + "<br>") + "</p>";
+        ventanilla.document.body.innerHTML += "<p>" + "Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "<br>"  + "</p>";
+        ventanilla.document.body.innerHTML += "<p>" + ("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "<br>") + "</p>" ;
     } catch (error) {
         console.error(error);
     }
@@ -199,70 +184,53 @@ function anadirtextoDiv(nomFruta, nombre) {
         }
     }
 }
-/*Funcion para mostrar los datos que se han recogido y se mostrara en la pagina en el area de texto, tambien se maneja el posible error
-al usar la funcion del precioMedio */
-function mostrarResultados() {
-    /* try {
-         var areaTexto = document.getElementById("areaTexto");
-         setTimeout(function() {
-             tipoFruta();
-             }, 1000);
-         var fecha = document.createTextNode("Fecha de compra : " + fechaActual.toLocaleString() + "\n");
-         var texto = document.createTextNode(recogidaResultados() + "\n");
-         var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "\n");
-         var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n");
-         areaTexto.appendChild(fecha);
-         areaTexto.appendChild(texto);
-         areaTexto.appendChild(texto2);
-         areaTexto.appendChild(texto3);
-         limpiarTodo();
-     } catch (error) {
-         console.error(error);
-     }*/
-}
+
 //funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10
 function limpiarTodo() {
-    //setTimeout(function () {
     let div = document.querySelectorAll("#contenedorDerecha p");
     //limpia bloque derecho
     for (let i = 0; i < div.length; i++) {
         div[i].remove();
     }
-    //limpia el area de texto
-    // document.getElementById("areaTexto").innerHTML = "";
     //pone la varible kilo de cada fruta a cero
     arrayFrutas.forEach(frutas => {
         frutas.kilos = 0;
     });
-    //}, 10000);
 }
 window.onload = function () {
-    
-    let formulario=document.getElementById("formulario");
+    let formulario = document.getElementById("formulario");
     let radioTarjeta = document.getElementById("tarjetasi");
-    let radioTarjeta2=document.getElementById("tarjetano");
+    let radioTarjeta2 = document.getElementById("tarjetano");
     creacionInputTarjeta();
+    document.getElementById("campo").disabled = true;
     document.getElementById("campo").hidden = true;
     formulario.addEventListener("submit", event => {
-        ventana();
+        let todoCorrecto = true;
+        if (todoCorrecto) {
+            ventana();
+            limpiarTodo();
+            event.preventDefault();
+        }
     }, false)
     radioTarjeta.addEventListener("change", function () {
-        if(radioTarjeta.checked==true){
-            document.getElementById("campo").hidden = false; 
+        if (radioTarjeta.checked == true) {
+            document.getElementById("campo").disabled = false;
+            document.getElementById("campo").hidden = false;
         }
     }, false)
     radioTarjeta2.addEventListener("change", function () {
-        if(radioTarjeta2.checked==true){
-            document.getElementById("campo").hidden = true; 
+        if (radioTarjeta2.checked == true) {
+            document.getElementById("campo").disabled = true;
+            document.getElementById("campo").hidden = true;
         }
     }, false)
 }
-function creacionInputTarjeta(){
+function creacionInputTarjeta() {
     let campoTarjeta = document.getElementById("tarjeta");
     let campo = document.createElement("input");
     campoTarjeta.appendChild(campo);
-    campo.setAttribute("id","campo");
+    campo.setAttribute("id", "campo");
     campo.setAttribute("type", "text");
-    campo.setAttribute("required","");
-    campo.setAttribute("pattern","[a-zA-Z]{3}[0-9]{4}[/|_|.|#|&]$");
+    campo.setAttribute("required", "");
+    campo.setAttribute("pattern", "[a-zA-Z]{3}[0-9]{4}[/|_|.|#|&]$");
 }
