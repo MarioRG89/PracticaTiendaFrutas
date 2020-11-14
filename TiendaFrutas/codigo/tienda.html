@@ -97,30 +97,35 @@
         </div>
         <div id="formulario">
             <form method="POST" action="">
-               
-                    <fieldset id="cuadrillo">
+                    <fieldset id="datos" >
                         <legend >Datos Cliente</legend>
                         <label for="name">Nombre</label>
                         <input type="text" name="nombre">
                         <label for="apellido">Apellidos</label>
-                        <input type="text" name="apellido">
+                        <input type="text" name="apellido"><br>
                         <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion">
+                        <input type="text" name="direccion"><br>
                         <label for="email">Email</label>
-                        <input type="email" name="email"><br>
+                        <input type="email" name="email">
+                    </fieldset>
+                    <fieldset id="pago">
+                        <legend>Forma de Pago</legend>
                         <label>Tipo de pago</label><br>
                         <label>Tarjeta</label>
                         <input name="pago" type="radio" value="tarjeta">
                         <label>Entrega</label>
                         <input name="pago" type="radio" value="tarjeta">
-                        <label>Tarjeta Cliente</label><br>
-                        <label>Tarjeta</label>
-                        <input name="pago" type="radio" value="tarjeta">
-                        <label>Entrega</label>
-                        <input name="pago" type="radio" value="tarjeta">
-                    
                     </fieldset>
-                
+                    <fieldset id="tarjeta">
+                        <legend>Tarjeta Cliente</legend>
+                        <label>Tarjeta Cliente</label><br>
+                        <label>Si</label>
+                        <input name="pago" type="radio" value="Si">
+                        <label>No</label>
+                        <input name="pago" type="radio" value="No">
+                    </fieldset>
+                    <input type="submit" value="Realizar Pedido">
+                    <input type="reset"  value="Limpiar formulario">
             </form>
         </div>
     </div>
