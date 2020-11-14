@@ -53,12 +53,12 @@ function sumaFruta(nombre) {
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
-            anadirtextoDiv(manzanaR,nombre)
+            anadirtextoDiv(manzanaR, nombre)
             break;
         case "manzanaV":
             kilos = Number(document.getElementById("manzanaVkilos").value)
             manzanaV.kilos = kilos + manzanaV.kilos
-            anadirtextoDiv(manzanaV,nombre)
+            anadirtextoDiv(manzanaV, nombre)
             break;
         case "melon":
             kilos = Number(document.getElementById("melonkilos").value)
@@ -67,13 +67,13 @@ function sumaFruta(nombre) {
             break;
         case "naranja":
             kilos = Number(document.getElementById("naranjakilos").value)
-            naranja.kilos = kilos + naranja.kilos 
+            naranja.kilos = kilos + naranja.kilos
             anadirtextoDiv(naranja, nombre)
             break;
         case "pera":
             kilos = Number(document.getElementById("perakilos").value)
-            pera.kilos = kilos + pera.kilos      
-            anadirtextoDiv(pera,nombre)
+            pera.kilos = kilos + pera.kilos
+            anadirtextoDiv(pera, nombre)
             break;
         case "platano":
             kilos = Number(document.getElementById("platanokilos").value)
@@ -128,7 +128,7 @@ function recogidaResultados() {
     });
     arrayFrutas.forEach(frutas => {
         if (frutas.kilos > 0) {
-            textoFrutasPrecios = frutas.getDatos() + "\n" + textoFrutasPrecios;
+            textoFrutasPrecios = frutas.getDatos() + "<br>" + textoFrutasPrecios;
         }
     });
     return textoFrutasPrecios;
@@ -145,17 +145,37 @@ function tipoFruta() {
     });
     arrayFrutas.forEach(frutas => {
         if (frutas.kilos > 0) {
-            textoFrutas = frutas.getDatos2() + "<br>" + textoFrutas ;
-           
+            textoFrutas = frutas.getDatos2() + "<br>" + textoFrutas;
+
         }
     });
-    ventana(textoFrutas);
 }
 //funcion para crear ventana,moverla y escribir en la ventana
-function ventana(texto){
-    let ventanilla=window.open("","pop-up","width=500px height=500px");
-    ventanilla.moveBy(600,300);
-    ventanilla.document.write("<p>"+ texto + "</p>");
+function ventana() {
+    let ventanilla = window.open("", "pop-up", "width=500px height=500px");
+    ventanilla.resizeTo(500, 300);
+    try {
+        ventanilla.document.write(("Fecha de compra : " + fechaActual.toLocaleString() + "<br>"));
+        ventanilla.document.write(recogidaResultados() + "<br>");
+        ventanilla.document.write("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "<br>");
+        ventanilla.document.write("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "<br>");
+        let boton1 = document.createElement("button");
+        ventanilla.document.body.appendChild(boton1);
+        boton1.setAttribute("id", "pedido");
+        boton1.innerHTML = "Terminar Pedido";
+        let boton2 = document.createElement("button");
+        ventanilla.document.body.appendChild(boton2);
+        console.log(boton2.value);
+        boton2.setAttribute("id", "volver");
+        boton2.innerHTML = "Volver  <br>";
+        ventanilla.onload = function () {
+            ventanilla.document.getElementById("volver").addEventListener("click", function () {
+                console.log("hola");
+            }, false)
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 //funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden
 function anadirtextoDiv(nomFruta, nombre) {
@@ -173,7 +193,7 @@ function anadirtextoDiv(nomFruta, nombre) {
             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
             if (elemento.getAttribute("class").includes(nombre)) {
                 elemento.classList.add("activa");
-            }else{
+            } else {
                 elemento.classList.remove("activa")
             }
         }
@@ -182,37 +202,67 @@ function anadirtextoDiv(nomFruta, nombre) {
 /*Funcion para mostrar los datos que se han recogido y se mostrara en la pagina en el area de texto, tambien se maneja el posible error
 al usar la funcion del precioMedio */
 function mostrarResultados() {
-    try {
-        var areaTexto = document.getElementById("areaTexto");
-        setTimeout(function() {
-            tipoFruta();
-            }, 1000);
-        var fecha = document.createTextNode("Fecha de compra : " + fechaActual.toLocaleString() + "\n");
-        var texto = document.createTextNode(recogidaResultados() + "\n");
-        var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "\n");
-        var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n");
-        areaTexto.appendChild(fecha);
-        areaTexto.appendChild(texto);
-        areaTexto.appendChild(texto2);
-        areaTexto.appendChild(texto3);
-        limpiarTodo();
-    } catch (error) {
-        console.error(error);
-    }
+    /* try {
+         var areaTexto = document.getElementById("areaTexto");
+         setTimeout(function() {
+             tipoFruta();
+             }, 1000);
+         var fecha = document.createTextNode("Fecha de compra : " + fechaActual.toLocaleString() + "\n");
+         var texto = document.createTextNode(recogidaResultados() + "\n");
+         var texto2 = document.createTextNode("Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "\n");
+         var texto3 = document.createTextNode("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "\n");
+         areaTexto.appendChild(fecha);
+         areaTexto.appendChild(texto);
+         areaTexto.appendChild(texto2);
+         areaTexto.appendChild(texto3);
+         limpiarTodo();
+     } catch (error) {
+         console.error(error);
+     }*/
 }
 //funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10
 function limpiarTodo() {
-    setTimeout(function () {
-        let div = document.querySelectorAll("#contenedorDerecha p");
-        //limpia bloque derecho
-        for (let i = 0; i < div.length; i++) {
-            div[i].remove();
+    //setTimeout(function () {
+    let div = document.querySelectorAll("#contenedorDerecha p");
+    //limpia bloque derecho
+    for (let i = 0; i < div.length; i++) {
+        div[i].remove();
+    }
+    //limpia el area de texto
+    // document.getElementById("areaTexto").innerHTML = "";
+    //pone la varible kilo de cada fruta a cero
+    arrayFrutas.forEach(frutas => {
+        frutas.kilos = 0;
+    });
+    //}, 10000);
+}
+window.onload = function () {
+    
+    let formulario=document.getElementById("formulario");
+    let radioTarjeta = document.getElementById("tarjetasi");
+    let radioTarjeta2=document.getElementById("tarjetano");
+    creacionInputTarjeta();
+    document.getElementById("campo").hidden = true;
+    formulario.addEventListener("submit", event => {
+        ventana();
+    }, false)
+    radioTarjeta.addEventListener("change", function () {
+        if(radioTarjeta.checked==true){
+            document.getElementById("campo").hidden = false; 
         }
-        //limpia el area de texto
-        document.getElementById("areaTexto").innerHTML = "";
-        //pone la varible kilo de cada fruta a cero
-        arrayFrutas.forEach(frutas => {
-            frutas.kilos = 0;
-        });
-    }, 10000);
+    }, false)
+    radioTarjeta2.addEventListener("change", function () {
+        if(radioTarjeta2.checked==true){
+            document.getElementById("campo").hidden = true; 
+        }
+    }, false)
+}
+function creacionInputTarjeta(){
+    let campoTarjeta = document.getElementById("tarjeta");
+    let campo = document.createElement("input");
+    campoTarjeta.appendChild(campo);
+    campo.setAttribute("id","campo");
+    campo.setAttribute("type", "text");
+    campo.setAttribute("required","");
+    campo.setAttribute("pattern","[a-zA-Z]{3}[0-9]{4}[/|_|.|#|&]$");
 }

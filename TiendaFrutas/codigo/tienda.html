@@ -100,29 +100,30 @@
                     <fieldset id="datos" >
                         <legend >Datos Cliente</legend>
                         <label for="name">Nombre</label>
-                        <input type="text" name="nombre">
+                        <input type="text" name="nombre" required>
                         <label for="apellido">Apellidos</label>
-                        <input type="text" name="apellido"><br>
+                        <input type="text" name="apellido" required><br>
                         <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion"><br>
+                        <input type="text" name="direccion" required><br>
                         <label for="email">Email</label>
-                        <input type="email" name="email">
+                        <input type="email" name="email" required>
                     </fieldset>
                     <fieldset id="pago">
                         <legend>Forma de Pago</legend>
                         <label>Tipo de pago</label><br>
                         <label>Tarjeta</label>
-                        <input name="pago" type="radio" value="tarjeta">
+                        <input name="pago" type="radio" value="tarjeta" required>
                         <label>Entrega</label>
-                        <input name="pago" type="radio" value="tarjeta">
+                        <input name="pago" type="radio" value="tarjeta" required>
+                        
                     </fieldset>
                     <fieldset id="tarjeta">
                         <legend>Tarjeta Cliente</legend>
                         <label>Tarjeta Cliente</label><br>
                         <label>Si</label>
-                        <input name="pago" type="radio" value="Si">
+                        <input id="tarjetasi" name="tarjeta" type="radio" value="Si" required>
                         <label>No</label>
-                        <input name="pago" type="radio" value="No">
+                        <input id="tarjetano" name="tarjeta" type="radio" value="No" required>
                     </fieldset>
                     <input type="submit" value="Realizar Pedido">
                     <input type="reset"  value="Limpiar formulario">
