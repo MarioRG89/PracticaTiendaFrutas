@@ -40,7 +40,7 @@ var arrayFrutas = [arandano, fresa, manzanaR, manzanaV, melon, naranja, pera, pl
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta(nombre) {
     switch (nombre) {
-         case "arandano":
+        case "arandano":
             kilos = Number(document.getElementById("arandanokilos").value)
             arandano.kilos = kilos + arandano.kilos
             anadirtextoDiv(arandano, nombre)
@@ -53,12 +53,12 @@ function sumaFruta(nombre) {
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
-            anadirtextoDiv(manzanaR,nombre)
+            anadirtextoDiv(manzanaR, nombre)
             break;
         case "manzanaV":
             kilos = Number(document.getElementById("manzanaVkilos").value)
             manzanaV.kilos = kilos + manzanaV.kilos
-            anadirtextoDiv(manzanaV,nombre)
+            anadirtextoDiv(manzanaV, nombre)
             break;
         case "melon":
             kilos = Number(document.getElementById("melonkilos").value)
@@ -67,13 +67,13 @@ function sumaFruta(nombre) {
             break;
         case "naranja":
             kilos = Number(document.getElementById("naranjakilos").value)
-            naranja.kilos = kilos + naranja.kilos 
+            naranja.kilos = kilos + naranja.kilos
             anadirtextoDiv(naranja, nombre)
             break;
         case "pera":
             kilos = Number(document.getElementById("perakilos").value)
-            pera.kilos = kilos + pera.kilos      
-            anadirtextoDiv(pera,nombre)
+            pera.kilos = kilos + pera.kilos
+            anadirtextoDiv(pera, nombre)
             break;
         case "platano":
             kilos = Number(document.getElementById("platanokilos").value)
@@ -113,8 +113,8 @@ function precioMedio(arrayFrutas) {
     if (kilosTotales == 0) {
         throw ' Los kgs totales no pueden ser 0, no se puede dividir entre 0';
     } else {
-        var precioTotal=obtenerprecioTotal(arrayFrutas);
-        return ( precioTotal/ kilosTotales);
+        var precioTotal = obtenerprecioTotal(arrayFrutas);
+        return (precioTotal / kilosTotales);
     }
 
 }
@@ -155,19 +155,20 @@ function tipoFruta(arrayFrutas) {
 //funcion para crear ventana,moverla y escribir en la ventana
 function ventana() {
     let ventanilla = window.open("./emergente.html", "pop-up", "width=500px height=300px");
-   try {
+    try {
     } catch (error) {
         console.error(error);
     }
 }
-//funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden
+//funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden y se pondra el primero en la la lista el ultimo añadido
 function anadirtextoDiv(nomFruta, nombre) {
     let kiloFruta = document.getElementById(nombre + "kilos").value;
     if (kiloFruta >= 1) {
         let divTexto = document.getElementById("contenedorDerecha");
         let parrafoTexto = document.createElement("p");
+        let todosParrafos = document.querySelectorAll("#contenedorDerecha p");
         let nodoTexto = document.createTextNode("Se añaden " + kiloFruta + " kilos  de " + nomFruta.nombre);
-        divTexto.appendChild(parrafoTexto);
+        divTexto.insertBefore(parrafoTexto, todosParrafos[0]);
         parrafoTexto.classList.add(nombre);
         parrafoTexto.appendChild(nodoTexto);
 
@@ -199,7 +200,7 @@ window.onload = function () {
     let formulario = document.getElementById("formulario");
     let radioTarjeta = document.getElementById("tarjetasi");
     let radioTarjeta2 = document.getElementById("tarjetano");
-    let arandano=document.getElementById("arandano");
+    let imagenes = document.getElementsByTagName("img");
     creacionInputTarjeta();
     document.getElementById("campo").disabled = true;
     document.getElementById("campo").hidden = true;
@@ -222,8 +223,13 @@ window.onload = function () {
             document.getElementById("campo").hidden = true;
         }
     }, false)
-
-  
+    for (let i = 0; i < imagenes.length; i++) {
+        imagenes[i].addEventListener("mouseover", function () {
+            document.getElementById("div" + i).classList.add("tooltip");
+            document.getElementById("span" + i).innerHTML = arrayFrutas[i].getDatos2();
+            document.getElementById("span" + i).classList.add("tooltiptext");
+        }, false)
+    }
 }
 function creacionInputTarjeta() {
     let campoTarjeta = document.getElementById("tarjeta");

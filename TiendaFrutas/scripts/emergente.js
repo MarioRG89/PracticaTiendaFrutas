@@ -12,11 +12,11 @@ window.onload = () => {
     divEmerg.innerHTML += "<p>" + "Precio total : " + ventana.obtenerprecioTotal(ventana.arrayFrutas) + " €" + "<br>"  + "</p>";
     divEmerg.innerHTML += "<p>" + ("Precio medio : " + ventana.precioMedio(ventana.arrayFrutas).toFixed(3) + " €/kg " + "<br>") + "</p>" ;
     boton1.addEventListener("click", (event) => {
-        ventana.limpiarTodo();
         window.close();
     }, false);
     boton2.addEventListener("click", (event) => {
         ventana.document.getElementById("formulario").submit();
+        ventana.limpiarTodo();
         window.close();
     }, false);
 }

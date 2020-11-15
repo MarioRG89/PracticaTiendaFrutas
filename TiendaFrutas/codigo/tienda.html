@@ -13,78 +13,88 @@
     <div id="contenedor">
         <div id="contenedorFrutas">
             <h1>Tienda de frutas </h1>
-            <div>
+            <div id="div0">
                 <img  id="arandano" src="../estilos/imagenes/arandano.jpg" onclick="sumaFruta('arandano')" >
+                <span id="span0"></span>
                 <p class="textoNombreFruta"><strong>ARANDANOS</strong></p>
                 <p class="textoPrecio"><em>precio: 13,4€</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="arandanokilos">
             </div>
-            <div>
+            <div id="div1">
                 <img src="../estilos/imagenes/fresa.jpg" onclick="sumaFruta('fresa')">
+                <span id="span1"></span>
                 <p class="textoNombreFruta"><strong>FRESA</strong></p>
                 <p class="textoPrecio"><em>precio: 3,75 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="fresakilos">
 
             </div>
-            <div>
+            <div id="div2">
                 <img src="../estilos/imagenes/manzana-roja.png" onclick="sumaFruta('manzanaR')">
+                <span id="span2"></span>
                 <p class="textoNombreFruta"><strong>MANZANA ROJA</strong></p>
                 <p class="textoPrecio"><em>precio: 1,75 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="manzanaRkilos">
 
             </div>
-            <div>
+            <div id="div3">
                 <img src="../estilos/imagenes/manzanaVerde.jpg" onclick="sumaFruta('manzanaV')">
+                <span id="span3"></span>
                 <p class="textoNombreFruta"><strong>MANZANA VERDE</strong></p>
                 <p class="textoPrecio"><em>precio: 2,69 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="manzanaVkilos">
 
             </div>
-            <div>
+            <div id="div4">
                 <img src="../estilos/imagenes/melon.jpg" onclick="sumaFruta('melon')">
+                <span id="span4"></span>
                 <p class="textoNombreFruta"><strong>MELON</strong></p>
                 <p class="textoPrecio"><em>precio: 0,75 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="melonkilos">
 
             </div>
-            <div>
+            <div id="div5">
                 <img src="../estilos/imagenes/naranja.jpg" onclick="sumaFruta('naranja')">
+                <span id="span5"></span>
                 <p class="textoNombreFruta"><strong>NARANJA</strong></p>
                 <p class="textoPrecio"><em>precio: 2,16 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="naranjakilos">
 
             </div>
-            <div>
+            <div id="div6">
                 <img id="pera" src="../estilos/imagenes/pera-limonera.jpg" onclick="sumaFruta('pera')">
+                <span id="span6"></span>
                 <p class="textoNombreFruta"><strong>PERA LIMONERA</strong></p>
                 <p class="textoPrecio"><em>precio: 1,60 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="perakilos">
             </div>
-            <div>
+            <div id="div7">
                 <img src="../estilos/imagenes/platano.jpg" onclick="sumaFruta('platano')">
+                <span id="span7"></span>
                 <p class="textoNombreFruta"><strong>PLATANO</strong></p>
                 <p class="textoPrecio"><em>precio: 2,15 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="platanokilos">
 
             </div>
-            <div>
+            <div id="div8">
                 <img src="../estilos/imagenes/sandia.jpg" onclick="sumaFruta('sandia')">
+                <span id="span8"></span>
                 <p class="textoNombreFruta"><strong>SANDIA</strong></p>
                 <p class="textoPrecio"><em>precio: 2,75 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
                 <input type="text" name="kilos" id="sandiakilos">
 
             </div>
-            <div>
+            <div id="div9">
                 <img src="../estilos/imagenes/uvas.jpg" onclick="sumaFruta('uvas')">
+                <span id="span9"></span>
                 <p class="textoNombreFruta"><strong>UVAS</strong></p>
                 <p class="textoPrecio"><em>precio: 1,75 €</em></p>
                 <label for="kilos">Indica los kilos</label><br>
@@ -96,7 +106,7 @@
 
         </div>
         <div id="divFormulario" >
-            <form id="formulario" method="POST" action="#">
+            <form id="formulario" method="GET" action="#">
                     <fieldset id="datos" >
                         <legend >Datos Cliente</legend>
                         <label for="name" >Nombre</label>
@@ -110,7 +120,6 @@
                     </fieldset>
                     <fieldset id="pago">
                         <legend>Forma de Pago</legend>
-                        <label>Tipo de pago</label><br>
                         <label>Tarjeta</label>
                         <input name="pago" type="radio" value="tarjeta" required>
                         <label>Entrega</label>
@@ -119,7 +128,6 @@
                     </fieldset>
                     <fieldset id="tarjeta">
                         <legend>Tarjeta Cliente</legend>
-                        <label>Tarjeta Cliente</label><br>
                         <label>Si</label>
                         <input id="tarjetasi" name="tarjeta" type="radio" value="Si" required>
                         <label>No</label>
