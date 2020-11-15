@@ -14,7 +14,7 @@
         <div id="contenedorFrutas">
             <h1>Tienda de frutas </h1>
             <div>
-                <img onclick="sumaFruta('arandano')" src="../estilos/imagenes/arandano.jpg">
+                <img  id="arandano" src="../estilos/imagenes/arandano.jpg" onclick="sumaFruta('arandano')" >
                 <p class="textoNombreFruta"><strong>ARANDANOS</strong></p>
                 <p class="textoPrecio"><em>precio: 13,4€</em></p>
                 <label for="kilos">Indica los kilos</label><br>
@@ -96,7 +96,7 @@
 
         </div>
         <div id="divFormulario" >
-            <form id="formulario" method="GET" action="#">
+            <form id="formulario" method="POST" action="#">
                     <fieldset id="datos" >
                         <legend >Datos Cliente</legend>
                         <label for="name" >Nombre</label>

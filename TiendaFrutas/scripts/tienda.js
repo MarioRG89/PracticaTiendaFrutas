@@ -10,16 +10,16 @@ class Fruta {
     getDatos = () => this.nombre + " ---- " + this.kilos + " kilos " + " ---- " + this.precioKilo + " €/kg " + " ---- " + (this.precioKilo * this.kilos).toFixed(2) + " € "
 }
 class FrutaVerano extends Fruta {
-    constructor(nombre, kilo, precioKilo, proximidad, region) {
-        super(nombre, kilo, precioKilo);
+    constructor(nombre, kilos, precioKilo, proximidad, region) {
+        super(nombre, kilos, precioKilo);
         this.proximidad = proximidad;
         this.region = region;
     }
     getDatos2 = () => " Las/os " + this.nombre + " es una fruta de verano " + " de " + this.proximidad + " estan recogida en " + this.region;
 }
 class FrutaInvierno extends Fruta {
-    constructor(nombre, kilo, precioKilo, conservacion) {
-        super(nombre, kilo, precioKilo);
+    constructor(nombre, kilos, precioKilo, conservacion) {
+        super(nombre, kilos, precioKilo);
         this.conservacion = conservacion;
     }
     getDatos2 = () => " Las/os " + this.nombre + " es una fruta de invierno " + " y es recomendable conservalas  " + this.conservacion + " de la nevera ";
@@ -40,7 +40,7 @@ var arrayFrutas = [arandano, fresa, manzanaR, manzanaV, melon, naranja, pera, pl
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta(nombre) {
     switch (nombre) {
-        case "arandano":
+         case "arandano":
             kilos = Number(document.getElementById("arandanokilos").value)
             arandano.kilos = kilos + arandano.kilos
             anadirtextoDiv(arandano, nombre)
@@ -53,12 +53,12 @@ function sumaFruta(nombre) {
         case "manzanaR":
             kilos = Number(document.getElementById("manzanaRkilos").value)
             manzanaR.kilos = kilos + manzanaR.kilos
-            anadirtextoDiv(manzanaR, nombre)
+            anadirtextoDiv(manzanaR,nombre)
             break;
         case "manzanaV":
             kilos = Number(document.getElementById("manzanaVkilos").value)
             manzanaV.kilos = kilos + manzanaV.kilos
-            anadirtextoDiv(manzanaV, nombre)
+            anadirtextoDiv(manzanaV,nombre)
             break;
         case "melon":
             kilos = Number(document.getElementById("melonkilos").value)
@@ -67,13 +67,13 @@ function sumaFruta(nombre) {
             break;
         case "naranja":
             kilos = Number(document.getElementById("naranjakilos").value)
-            naranja.kilos = kilos + naranja.kilos
+            naranja.kilos = kilos + naranja.kilos 
             anadirtextoDiv(naranja, nombre)
             break;
         case "pera":
             kilos = Number(document.getElementById("perakilos").value)
-            pera.kilos = kilos + pera.kilos
-            anadirtextoDiv(pera, nombre)
+            pera.kilos = kilos + pera.kilos      
+            anadirtextoDiv(pera,nombre)
             break;
         case "platano":
             kilos = Number(document.getElementById("platanokilos").value)
@@ -95,29 +95,31 @@ function sumaFruta(nombre) {
 
 //funcion que calcula el precio total a partir del array de objetos fruta  y devuelve el precioTotal que es la suma de los kg de fruta por su precio
 
-function obtenerprecioTotal() {
-    let arrayPrecio = arrayFrutas.map((elemento) =>
-        elemento.kilos * elemento.precioKilo);
-    let precioTotal = arrayPrecio.reduce((precioTot, precioInd) => precioTot + precioInd);
+function obtenerprecioTotal(arrayFrutas) {
+    let precioTotal = 0;
+    arrayFrutas.forEach((frutas) => {
+        precioTotal = precioTotal + (frutas.precioKilo * frutas.kilos);
+    });
     return precioTotal;
 }
 /*funcion que calcula el precio medio a partir del precioTotal obtenido en la funcion precioTotal 
 y de los kilos que se obtienen en la misma se incluye el error de la posibilidad de dividir entre 0 
 si no  se han agregado kilos de fruta */
-function precioMedio() {
-    let valorIn = 0;
-    let kilosTotal = arrayFrutas.reduce(function (kiloTo, kiloAct) {
-        return kiloTo + kiloAct.kilos
-    }, valorIn);
-    if (kilosTotal == 0) {
-        throw new Error("Los kilos totales son 0,no se han agregado kilos de fruta, no se puede dividir entre 0 ")
+function precioMedio(arrayFrutas) {
+    let kilosTotales = 0;
+    arrayFrutas.forEach((frutas) => {
+        kilosTotales = kilosTotales + frutas.kilos;
+    });
+    if (kilosTotales == 0) {
+        throw ' Los kgs totales no pueden ser 0, no se puede dividir entre 0';
     } else {
-        let precioMedio = obtenerprecioTotal() / kilosTotal;
-        return precioMedio;
+        var precioTotal=obtenerprecioTotal(arrayFrutas);
+        return ( precioTotal/ kilosTotales);
     }
+
 }
 //Obtencion de datos a partir del array de objetos fruta  en los cuales se ha ido recogiendo lo que quiere el usuario en la pagina
-function recogidaResultados() {
+function recogidaResultados(arrayFrutas) {
     var textoFrutasPrecios = "";
     arrayFrutas.sort(function (a, b) {
         if (a.nombre > b.nombre) {
@@ -134,7 +136,7 @@ function recogidaResultados() {
     return textoFrutasPrecios;
 }
 //Funcion que ordena y recoge los datos de las frutas de verano e invierno
-function tipoFruta() {
+function tipoFruta(arrayFrutas) {
     var textoFrutas = "";
     arrayFrutas.sort(function (a, b) {
         if (a.nombre > b.nombre) {
@@ -153,11 +155,7 @@ function tipoFruta() {
 //funcion para crear ventana,moverla y escribir en la ventana
 function ventana() {
     let ventanilla = window.open("./emergente.html", "pop-up", "width=500px height=300px");
-    try {
-        ventanilla.document.body.innerHTML += "<p>"(("Fecha de compra : " + fechaActual.toLocaleString() + "<br>")) + "</p>";
-        ventanilla.document.body.innerHTML += "<p>" + (recogidaResultados() + "<br>") + "</p>";
-        ventanilla.document.body.innerHTML += "<p>" + "Precio total : " + parseFloat(Math.floor(obtenerprecioTotal() * 100) / 100).toFixed(2) + " €" + "<br>"  + "</p>";
-        ventanilla.document.body.innerHTML += "<p>" + ("Precio medio : " + precioMedio().toFixed(3) + " €/kg " + "<br>") + "</p>" ;
+   try {
     } catch (error) {
         console.error(error);
     }
@@ -201,6 +199,7 @@ window.onload = function () {
     let formulario = document.getElementById("formulario");
     let radioTarjeta = document.getElementById("tarjetasi");
     let radioTarjeta2 = document.getElementById("tarjetano");
+    let arandano=document.getElementById("arandano");
     creacionInputTarjeta();
     document.getElementById("campo").disabled = true;
     document.getElementById("campo").hidden = true;
@@ -208,7 +207,6 @@ window.onload = function () {
         let todoCorrecto = true;
         if (todoCorrecto) {
             ventana();
-            limpiarTodo();
             event.preventDefault();
         }
     }, false)
@@ -224,6 +222,8 @@ window.onload = function () {
             document.getElementById("campo").hidden = true;
         }
     }, false)
+
+  
 }
 function creacionInputTarjeta() {
     let campoTarjeta = document.getElementById("tarjeta");
@@ -234,3 +234,4 @@ function creacionInputTarjeta() {
     campo.setAttribute("required", "");
     campo.setAttribute("pattern", "[a-zA-Z]{3}[0-9]{4}[/|_|.|#|&]$");
 }
+
