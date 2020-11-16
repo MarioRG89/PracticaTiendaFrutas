@@ -155,10 +155,6 @@ function tipoFruta(arrayFrutas) {
 //funcion para crear ventana,moverla y escribir en la ventana
 function ventana() {
     let ventanilla = window.open("./emergente.html", "pop-up", "width=500px height=300px");
-    try {
-    } catch (error) {
-        console.error(error);
-    }
 }
 //funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden y se pondra el primero en la la lista el ultimo añadido
 function anadirtextoDiv(nomFruta, nombre) {
@@ -166,12 +162,11 @@ function anadirtextoDiv(nomFruta, nombre) {
     if (kiloFruta >= 1) {
         let divTexto = document.getElementById("contenedorDerecha");
         let parrafoTexto = document.createElement("p");
-        let todosParrafos = document.querySelectorAll("#contenedorDerecha p");
         let nodoTexto = document.createTextNode("Se añaden " + kiloFruta + " kilos  de " + nomFruta.nombre);
-        divTexto.insertBefore(parrafoTexto, todosParrafos[0]);
+        divTexto.appendChild(parrafoTexto);
         parrafoTexto.classList.add(nombre);
         parrafoTexto.appendChild(nodoTexto);
-
+        divTexto.scrollTo(0,100);
         //bucle para añadir la clase activa a los parrafos que tengan la misma clase y asi cambiar el color del texto
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
@@ -187,15 +182,18 @@ function anadirtextoDiv(nomFruta, nombre) {
 //funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10
 function limpiarTodo() {
     let div = document.querySelectorAll("#contenedorDerecha p");
+    let inputs = document.querySelectorAll("input[type=text]");
     //limpia bloque derecho
     for (let i = 0; i < div.length; i++) {
         div[i].remove();
+        inputs[i].value="";
     }
     //pone la varible kilo de cada fruta a cero
     arrayFrutas.forEach(frutas => {
         frutas.kilos = 0;
     });
 }
+//funcion que recoge todos los listeners
 window.onload = function () {
     let formulario = document.getElementById("formulario");
     let radioTarjeta = document.getElementById("tarjetasi");
@@ -205,11 +203,8 @@ window.onload = function () {
     document.getElementById("campo").disabled = true;
     document.getElementById("campo").hidden = true;
     formulario.addEventListener("submit", event => {
-        let todoCorrecto = true;
-        if (todoCorrecto) {
-            ventana();
-            event.preventDefault();
-        }
+        ventana();
+        event.preventDefault();
     }, false)
     radioTarjeta.addEventListener("change", function () {
         if (radioTarjeta.checked == true) {
@@ -229,6 +224,18 @@ window.onload = function () {
             document.getElementById("span" + i).innerHTML = arrayFrutas[i].getDatos2();
             document.getElementById("span" + i).classList.add("tooltiptext");
         }, false)
+    }
+     
+    switch (i){
+        case 0:
+            imagenes[0].addEventListener("click",sumaFruta("arandano"));
+            break;
+        case 1:
+            imagenes[1].addEventListener("click",sumaFruta("fresa"));
+            break;
+        case 2:
+            imagenes[2].addEventListener("click",sumaFruta("arandano"))
+        
     }
 }
 function creacionInputTarjeta() {
