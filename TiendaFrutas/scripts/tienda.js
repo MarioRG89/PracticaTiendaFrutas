@@ -184,77 +184,7 @@ window.onload = function () {
     document.getElementById("campo").hidden = true;
     document.getElementById("labelCampo").hidden = true;
     formulario.addEventListener("submit", event => {
-        let todoCorrecto = true;
-        let nombre = document.getElementById("nombre");
-        let nombreLabel = document.getElementById("nombreLabel");
-        if (!nombre.validity.valid) {
-            nombreLabel.style.color = "red";
-            event.preventDefault();
-            todoCorrecto=false;
-        }else{
-            nombreLabel.style.color = "black";
-        }
-        let apellido=document.getElementById("apellido");
-        let apellidoLabel=document.getElementById("apellidoLabel");
-        if(!apellido.validity.valid){
-            apellidoLabel.style.color ="red";
-            event.preventDefault();
-            todoCorrecto=false;
-        }else{
-            apellidoLabel.style.color ="black";
-        }
-        let direccion=document.getElementById("direccion");
-        let direccionLabel=document.getElementById("direccionLabel");
-        if(!direccion.validity.valid){
-            direccionLabel.style.color ="red";
-            event.preventDefault();
-            todoCorrecto=false;
-        }else{
-            direccionLabel.style.color ="black";
-        }
-        let email=document.getElementById("email");
-        let emailLabel=document.getElementById("emailLabel");
-        if(!email.validity.valid){
-            emailLabel.style.color ="red";
-            event.preventDefault();
-            todoCorrecto=false;
-        }else{
-            emailLabel.style.color ="black";
-        }
-        let radioPago=document.getElementsByName("pago");
-        let pago=document.getElementById("pagoLegend");
-        let radioEle=false;
-        for(i=0;i<radioPago.length;i++){
-            if(radioPago[i].checked==true){
-                radioEle=true;
-            }
-            if(radioEle==false){
-                pago.style.color="red";
-                event.preventDefault();
-                todoCorrecto=false;
-            }else{
-                pago.style.color="black";
-            }
-        }
-        let radioTarjeta=document.getElementsByName("tarjeta");
-        let tarjeta=document.getElementById("tarjetaLegend");
-        let radioEle2=false;
-        for(i=0;i<radioTarjeta.length;i++){
-            if(radioTarjeta[i].checked==true){
-                radioEle2=true;
-            }
-            if(radioEle2==false){
-                tarjeta.style.color="red";
-                event.preventDefault();
-                todoCorrecto=false;
-            }else{
-                tarjeta.style.color="black";
-            }
-        }
-        if (todoCorrecto) {
-            window.open("./emergente.html", "pop-up", "width=500px height=300px");
-            event.preventDefault();
-        }
+        validacionesFormulario(event);
     }, false)
     radioTarjeta.addEventListener("change", function () {
         if (radioTarjeta.checked == true) {
@@ -278,9 +208,82 @@ window.onload = function () {
         }, false)
     }
     imagenesClick(imagenes);
-
-
 }
+// Funcion que recoge todas las validaciones del formulario
+function validacionesFormulario(event) {
+    let todoCorrecto = true;
+    let nombre = document.getElementById("nombre");
+    let nombreLabel = document.getElementById("nombreLabel");
+    if (!nombre.validity.valid) {
+        nombreLabel.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    } else {
+        nombreLabel.style.color = "black";
+    }
+    let apellido = document.getElementById("apellido");
+    let apellidoLabel = document.getElementById("apellidoLabel");
+    if (!apellido.validity.valid) {
+        apellidoLabel.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    } else {
+        apellidoLabel.style.color = "black";
+    }
+    let direccion = document.getElementById("direccion");
+    let direccionLabel = document.getElementById("direccionLabel");
+    if (!direccion.validity.valid) {
+        direccionLabel.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    } else {
+        direccionLabel.style.color = "black";
+    }
+    let email = document.getElementById("email");
+    let emailLabel = document.getElementById("emailLabel");
+    if (!email.validity.valid) {
+        emailLabel.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    } else {
+        emailLabel.style.color = "black";
+    }
+    let radioPago = document.getElementsByName("pago");
+    let pago = document.getElementById("pagoLegend");
+    let radioEle = false;
+    for (i = 0; i < radioPago.length; i++) {
+        if (radioPago[i].checked == true) {
+            radioEle = true;
+        }
+        if (radioEle == false) {
+            pago.style.color = "red";
+            event.preventDefault();
+            todoCorrecto = false;
+        } else {
+            pago.style.color = "black";
+        }
+    }
+    let radioTarjeta = document.getElementsByName("tarjeta");
+    let tarjeta = document.getElementById("tarjetaLegend");
+    let radioEle2 = false;
+    for (i = 0; i < radioTarjeta.length; i++) {
+        if (radioTarjeta[i].checked == true) {
+            radioEle2 = true;
+        }
+        if (radioEle2 == false) {
+            tarjeta.style.color = "red";
+            event.preventDefault();
+            todoCorrecto = false;
+        } else {
+            tarjeta.style.color = "black";
+        }
+    }
+    if (todoCorrecto) {
+        window.open("./emergente.html", "pop-up", "width=500px height=300px");
+        event.preventDefault();
+    }
+}
+
 //Funcion que recoge los listener  al hacer click en la imagenes
 function imagenesClick(imagenes) {
     imagenes[0].addEventListener("click", sumaFruta("arandano"));
