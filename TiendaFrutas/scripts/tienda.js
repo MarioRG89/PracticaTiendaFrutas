@@ -178,7 +178,12 @@ window.onload = function () {
     let formulario = document.getElementById("formulario");
     creacionInputTarjeta();
     formulario.addEventListener("submit", event => {
+        let todoCorrecto = true;
         validacionesFormulario(event);
+        if (todoCorrecto) {
+            window.open("./emergente.html", "pop-up", "width=500px height=300px");
+            event.preventDefault();
+        }
     }, false)
     codigoClienteListener();
     imageneToolTip();
@@ -222,7 +227,7 @@ function codigoClienteListener() {
 
 // Funcion que recoge todas las validaciones del formulario
 function validacionesFormulario(event) {
-    let todoCorrecto = true;
+   
     let nombre = document.getElementById("nombre");
     let nombreLabel = document.getElementById("nombreLabel");
     if (!nombre.validity.valid) {
@@ -289,10 +294,7 @@ function validacionesFormulario(event) {
             tarjeta.style.color = "black";
         }
     }
-    if (todoCorrecto) {
-        window.open("./emergente.html", "pop-up", "width=500px height=300px");
-        event.preventDefault();
-    }
+    return todoCorrecto;
 }
 
 //Funcion que recoge los listener  al hacer click en la imagenes
