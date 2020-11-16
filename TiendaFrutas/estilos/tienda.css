@@ -28,7 +28,7 @@ h1{
     float: left;
     width: 70%;
     margin: auto;
-    overflow: hidden;
+    overflow: auto;
     height: 60%;
     text-align: center;
     margin-top: 10px;
@@ -40,17 +40,17 @@ h1{
     height: 1000px;
     overflow: hidden;   
 }
-#formulario{
+#divFormulario{
     height: 40%;
     clear: both;
     width: 100%;
     margin-top: 50px;
 }
 #contenedorFrutas div{
-    display: inline-block;
     height: auto;
     margin: 10px;
     margin-top: 5px;
+    display: inline-block;
 }
 #datos,#tarjeta,#pago{
     margin:10px;
@@ -70,7 +70,7 @@ form {
     border-bottom: 1px dotted black;
   }
   
-  .tooltip .tooltiptext {
+.tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -87,6 +87,6 @@ form {
     margin-left: -60px;
   }
   
-  .tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext {
     visibility: visible;
-  }
+}

@@ -135,27 +135,7 @@ function recogidaResultados(arrayFrutas) {
     });
     return textoFrutasPrecios;
 }
-//Funcion que ordena y recoge los datos de las frutas de verano e invierno
-function tipoFruta(arrayFrutas) {
-    var textoFrutas = "";
-    arrayFrutas.sort(function (a, b) {
-        if (a.nombre > b.nombre) {
-            return -1;
-        } else {
-            return 1;
-        }
-    });
-    arrayFrutas.forEach(frutas => {
-        if (frutas.kilos > 0) {
-            textoFrutas = frutas.getDatos2() + "<br>" + textoFrutas;
 
-        }
-    });
-}
-//funcion para crear ventana,moverla y escribir en la ventana
-function ventana() {
-    let ventanilla = window.open("./emergente.html", "pop-up", "width=500px height=300px");
-}
 //funcion añadir texto al div que esta en la derecha y muestra los kilos de fruta que se añaden y se pondra el primero en la la lista el ultimo añadido
 function anadirtextoDiv(nomFruta, nombre) {
     let kiloFruta = document.getElementById(nombre + "kilos").value;
@@ -166,7 +146,7 @@ function anadirtextoDiv(nomFruta, nombre) {
         divTexto.appendChild(parrafoTexto);
         parrafoTexto.classList.add(nombre);
         parrafoTexto.appendChild(nodoTexto);
-        divTexto.scrollTo(0,100);
+        divTexto.scrollTo(0, 100);
         //bucle para añadir la clase activa a los parrafos que tengan la misma clase y asi cambiar el color del texto
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
@@ -186,14 +166,14 @@ function limpiarTodo() {
     //limpia bloque derecho
     for (let i = 0; i < div.length; i++) {
         div[i].remove();
-        inputs[i].value="";
+        inputs[i].value = "";
     }
     //pone la varible kilo de cada fruta a cero
     arrayFrutas.forEach(frutas => {
         frutas.kilos = 0;
     });
 }
-//funcion que recoge todos los listeners
+//funcion que recoge todos los eventos que se producen al cargar la pagina
 window.onload = function () {
     let formulario = document.getElementById("formulario");
     let radioTarjeta = document.getElementById("tarjetasi");
@@ -202,20 +182,92 @@ window.onload = function () {
     creacionInputTarjeta();
     document.getElementById("campo").disabled = true;
     document.getElementById("campo").hidden = true;
+    document.getElementById("labelCampo").hidden = true;
     formulario.addEventListener("submit", event => {
-        ventana();
-        event.preventDefault();
+        let todoCorrecto = true;
+        let nombre = document.getElementById("nombre");
+        let nombreLabel = document.getElementById("nombreLabel");
+        if (!nombre.validity.valid) {
+            nombreLabel.style.color = "red";
+            event.preventDefault();
+            todoCorrecto=false;
+        }else{
+            nombreLabel.style.color = "black";
+        }
+        let apellido=document.getElementById("apellido");
+        let apellidoLabel=document.getElementById("apellidoLabel");
+        if(!apellido.validity.valid){
+            apellidoLabel.style.color ="red";
+            event.preventDefault();
+            todoCorrecto=false;
+        }else{
+            apellidoLabel.style.color ="black";
+        }
+        let direccion=document.getElementById("direccion");
+        let direccionLabel=document.getElementById("direccionLabel");
+        if(!direccion.validity.valid){
+            direccionLabel.style.color ="red";
+            event.preventDefault();
+            todoCorrecto=false;
+        }else{
+            direccionLabel.style.color ="black";
+        }
+        let email=document.getElementById("email");
+        let emailLabel=document.getElementById("emailLabel");
+        if(!email.validity.valid){
+            emailLabel.style.color ="red";
+            event.preventDefault();
+            todoCorrecto=false;
+        }else{
+            emailLabel.style.color ="black";
+        }
+        let radioPago=document.getElementsByName("pago");
+        let pago=document.getElementById("pagoLegend");
+        let radioEle=false;
+        for(i=0;i<radioPago.length;i++){
+            if(radioPago[i].checked==true){
+                radioEle=true;
+            }
+            if(radioEle==false){
+                pago.style.color="red";
+                event.preventDefault();
+                todoCorrecto=false;
+            }else{
+                pago.style.color="black";
+            }
+        }
+        let radioTarjeta=document.getElementsByName("tarjeta");
+        let tarjeta=document.getElementById("tarjetaLegend");
+        let radioEle2=false;
+        for(i=0;i<radioTarjeta.length;i++){
+            if(radioTarjeta[i].checked==true){
+                radioEle2=true;
+            }
+            if(radioEle2==false){
+                tarjeta.style.color="red";
+                event.preventDefault();
+                todoCorrecto=false;
+            }else{
+                tarjeta.style.color="black";
+            }
+        }
+        if (todoCorrecto) {
+            window.open("./emergente.html", "pop-up", "width=500px height=300px");
+            event.preventDefault();
+        }
     }, false)
     radioTarjeta.addEventListener("change", function () {
         if (radioTarjeta.checked == true) {
             document.getElementById("campo").disabled = false;
             document.getElementById("campo").hidden = false;
+            document.getElementById("labelCampo").hidden = false;
         }
     }, false)
     radioTarjeta2.addEventListener("change", function () {
         if (radioTarjeta2.checked == true) {
             document.getElementById("campo").disabled = true;
             document.getElementById("campo").hidden = true;
+            document.getElementById("labelCampo").hidden = true;
         }
     }, false)
     for (let i = 0; i < imagenes.length; i++) {
@@ -225,24 +277,35 @@ window.onload = function () {
             document.getElementById("span" + i).classList.add("tooltiptext");
         }, false)
     }
-     
-    switch (i){
-        case 0:
-            imagenes[0].addEventListener("click",sumaFruta("arandano"));
-            break;
-        case 1:
-            imagenes[1].addEventListener("click",sumaFruta("fresa"));
-            break;
-        case 2:
-            imagenes[2].addEventListener("click",sumaFruta("arandano"))
-        
-    }
+    imagenesClick(imagenes);
+
+
 }
+//Funcion que recoge los listener  al hacer click en la imagenes
+function imagenesClick(imagenes) {
+    imagenes[0].addEventListener("click", sumaFruta("arandano"));
+    imagenes[1].addEventListener("click", sumaFruta("fresa"));
+    imagenes[2].addEventListener("click", sumaFruta("manzanaR"));
+    imagenes[3].addEventListener("click", sumaFruta("manzanaV"));
+    imagenes[4].addEventListener("click", sumaFruta("melon"));
+    imagenes[5].addEventListener("click", sumaFruta("naranja"));
+    imagenes[6].addEventListener("click", sumaFruta("pera"));
+    imagenes[7].addEventListener("click", sumaFruta("platano"));
+    imagenes[8].addEventListener("click", sumaFruta("sandia"));
+    imagenes[9].addEventListener("click", sumaFruta("uvas"));
+}
+//funcion que crea el input cuando das en el radio button de si de tarjeta cliente
 function creacionInputTarjeta() {
     let campoTarjeta = document.getElementById("tarjeta");
+    let labelCampo=document.createElement("label");
     let campo = document.createElement("input");
+    campoTarjeta.appendChild(labelCampo);
     campoTarjeta.appendChild(campo);
+    labelCampo.innerHTML="Codigo Cliente";
+    labelCampo.setAttribute("id","labelCampo");
+    labelCampo.setAttribute("for","codigoCliente")
     campo.setAttribute("id", "campo");
+    campo.setAttribute("name","codigoCliente");
     campo.setAttribute("type", "text");
     campo.setAttribute("required", "");
     campo.setAttribute("pattern", "[a-zA-Z]{3}[0-9]{4}[/|_|.|#|&]$");

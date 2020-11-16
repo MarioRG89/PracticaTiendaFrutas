@@ -106,28 +106,27 @@
 
         </div>
         <div id="divFormulario" >
-            <form id="formulario" method="GET" action="#">
+            <form id="formulario" method="GET" action="#" novalidate >
                     <fieldset id="datos" >
                         <legend >Datos Cliente</legend>
-                        <label for="name" >Nombre</label>
-                        <input type="text" name="nombre" maxlength="15" minlength="4" required>
-                        <label for="apellido">Apellidos</label>
-                        <input type="text" name="apellido" required><br>
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" required><br>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" required>
+                        <label id="nombreLabel" for="name" >Nombre</label>
+                        <input id="nombre" type="text" name="nombre" maxlength="15" minlength="4" required>
+                        <label id="apellidoLabel" for="apellido">Apellidos</label>
+                        <input id="apellido" type="text" name="apellido" required><br>
+                        <label id="direccionLabel" for="direccion">Direccion</label>
+                        <input id="direccion" type="text" name="direccion" required><br>
+                        <label id="emailLabel" for="email">Email</label>
+                        <input id="email" type="email" name="email" required>
                     </fieldset>
-                    <fieldset id="pago">
-                        <legend>Forma de Pago</legend>
+                    <fieldset>
+                        <legend id="pagoLegend">Forma de Pago</legend>
                         <label>Tarjeta</label>
                         <input name="pago" type="radio" value="tarjeta" required>
                         <label>Entrega</label>
                         <input name="pago" type="radio" value="tarjeta" required>
-                        
                     </fieldset>
                     <fieldset id="tarjeta">
-                        <legend>Tarjeta Cliente</legend>
+                        <legend id="tarjetaLegend">Tarjeta Cliente</legend>
                         <label>Si</label>
                         <input id="tarjetasi" name="tarjeta" type="radio" value="Si" required>
                         <label>No</label>
