@@ -176,39 +176,48 @@ function limpiarTodo() {
 //funcion que recoge todos los eventos que se producen al cargar la pagina
 window.onload = function () {
     let formulario = document.getElementById("formulario");
-    let radioTarjeta = document.getElementById("tarjetasi");
-    let radioTarjeta2 = document.getElementById("tarjetano");
-    let imagenes = document.getElementsByTagName("img");
     creacionInputTarjeta();
-    document.getElementById("campo").disabled = true;
-    document.getElementById("campo").hidden = true;
-    document.getElementById("labelCampo").hidden = true;
     formulario.addEventListener("submit", event => {
         validacionesFormulario(event);
     }, false)
+    codigoClienteListener();
+    imageneToolTip();
+    imagenesClick();
+}
+//funcion que recoge el listener para mostrar el tooltip al pasar por encima de la imagen
+function imageneToolTip() {
+    let imagenes = document.getElementsByTagName("img");
+    for (let i = 0; i < imagenes.length; i++) {
+        imagenes[i].addEventListener("mouseover", function () {
+            document.getElementById("div" + i).classList.add("tooltip");
+            document.getElementById("span" + i).innerHTML = arrayFrutas[i].getDatos2();
+            document.getElementById("span" + i).classList.add("tooltiptext");
+        }, false);
+    }
+}
+//funncion que recoge el listener para mostrar y ocultarlo el codigo cliente al activar los radio button del formulario del apartado tarjeta cliente
+function codigoClienteListener() {
+    let radioTarjeta = document.getElementById("tarjetasi");
+    let radioTarjeta2 = document.getElementById("tarjetano");
+    document.getElementById("campo").disabled = true;
+    document.getElementById("campo").hidden = true;
+    document.getElementById("labelCampo").hidden = true;
     radioTarjeta.addEventListener("change", function () {
         if (radioTarjeta.checked == true) {
             document.getElementById("campo").disabled = false;
             document.getElementById("campo").hidden = false;
             document.getElementById("labelCampo").hidden = false;
         }
-    }, false)
+    }, false);
     radioTarjeta2.addEventListener("change", function () {
         if (radioTarjeta2.checked == true) {
             document.getElementById("campo").disabled = true;
             document.getElementById("campo").hidden = true;
             document.getElementById("labelCampo").hidden = true;
         }
-    }, false)
-    for (let i = 0; i < imagenes.length; i++) {
-        imagenes[i].addEventListener("mouseover", function () {
-            document.getElementById("div" + i).classList.add("tooltip");
-            document.getElementById("span" + i).innerHTML = arrayFrutas[i].getDatos2();
-            document.getElementById("span" + i).classList.add("tooltiptext");
-        }, false)
-    }
-    imagenesClick(imagenes);
+    }, false);
 }
+
 // Funcion que recoge todas las validaciones del formulario
 function validacionesFormulario(event) {
     let todoCorrecto = true;
@@ -285,7 +294,8 @@ function validacionesFormulario(event) {
 }
 
 //Funcion que recoge los listener  al hacer click en la imagenes
-function imagenesClick(imagenes) {
+function imagenesClick() {
+    let imagenes = document.getElementsByTagName("img");
     imagenes[0].addEventListener("click", sumaFruta("arandano"));
     imagenes[1].addEventListener("click", sumaFruta("fresa"));
     imagenes[2].addEventListener("click", sumaFruta("manzanaR"));
@@ -297,7 +307,7 @@ function imagenesClick(imagenes) {
     imagenes[8].addEventListener("click", sumaFruta("sandia"));
     imagenes[9].addEventListener("click", sumaFruta("uvas"));
 }
-//funcion que crea el input cuando das en el radio button de si de tarjeta cliente
+//funcion que crea el input y el label del codigo cliente cuando das en el radio button de si de tarjeta cliente
 function creacionInputTarjeta() {
     let campoTarjeta = document.getElementById("tarjeta");
     let labelCampo=document.createElement("label");
