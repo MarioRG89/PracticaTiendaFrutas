@@ -273,7 +273,7 @@ function validacionesFormulario(event) {
     }
     console.log(todoCorrecto + "email")
     //Validacion radioButton Pago 
-    let radioPago=document.querySelector("input[name=tarjeta]:checked");
+    let radioPago=document.querySelector("input[name=pago]:checked");
     let pago=document.getElementById("pagoLegend");
     if(!radioPago){
         pago.style.color = "red";
@@ -284,15 +284,27 @@ function validacionesFormulario(event) {
         console.log(todoCorrecto + "tarjeta true")
     }
     //Validacion radioButton Tarjeta Cliente
-    let radioTarjeta = document.querySelector("input[name=tarjeta]:checked");
+    let radioTarjeta = document.getElementsByName("tarjeta");
     let tarjeta = document.getElementById("tarjetaLegend");
-    if(!radioTarjeta){
+    let codigoCliente=document.getElementById("codigoCliente");
+    let codigoClienteLabel=document.getElementById("labelCodigoCliente");
+    if(((radioTarjeta[0].checked==false) || !codigoCliente.validity.valid) && !radioTarjeta[1].checked ){
+        tarjeta.style.color = "red";
+        codigoClienteLabel.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    }else if(!radioTarjeta[0].checked && !radioTarjeta[1].checked) {
         tarjeta.style.color = "red";
         event.preventDefault();
         todoCorrecto = false;
-    }else {
+        console.log(todoCorrecto + " si y no no estan checkeados")
+    }else if(radioTarjeta[1].checked){
         tarjeta.style.color = "black";
-        console.log(todoCorrecto + "tarjeta true")
+        codigoClienteLabel.style.color = "black";
+        console.log(todoCorrecto + "solo el no correcto")
+    }else{
+        tarjeta.style.color = "black";
+        codigoClienteLabel.style.color = "black";
     }
     console.log(todoCorrecto + "final")
     return todoCorrecto;
@@ -326,6 +338,6 @@ function creacionInputTarjeta() {
     campo.setAttribute("name","codigoCliente");
     campo.setAttribute("type", "text");
     campo.setAttribute("required", "");
-    campo.setAttribute("pattern", "[a-zA-Z]{3}[0-9]{4}[/|_|.|#|&]$");
+    campo.setAttribute("pattern", "[a-zA-Z]{3}[0-9]{4}(/|_|.|#|&)$");
 }
 
