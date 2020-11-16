@@ -199,21 +199,23 @@ function imageneToolTip() {
 function codigoClienteListener() {
     let radioTarjeta = document.getElementById("tarjetasi");
     let radioTarjeta2 = document.getElementById("tarjetano");
-    document.getElementById("campo").disabled = true;
-    document.getElementById("campo").hidden = true;
-    document.getElementById("labelCampo").hidden = true;
+    let campo=document.getElementById("codigoCliente");
+    let labelCampo= document.getElementById("labelCodigoCliente");
+    campo.disabled = true;
+    campo.hidden = true;
+    labelCampo.hidden = true;
     radioTarjeta.addEventListener("change", function () {
         if (radioTarjeta.checked == true) {
-            document.getElementById("campo").disabled = false;
-            document.getElementById("campo").hidden = false;
-            document.getElementById("labelCampo").hidden = false;
+            campo.disabled = false;
+            campo.hidden = false;
+            labelCampo.hidden = false;
         }
     }, false);
     radioTarjeta2.addEventListener("change", function () {
         if (radioTarjeta2.checked == true) {
-            document.getElementById("campo").disabled = true;
-            document.getElementById("campo").hidden = true;
-            document.getElementById("labelCampo").hidden = true;
+            campo.disabled = true;
+            campo.hidden = true;
+            labelCampo.hidden = true;
         }
     }, false);
 }
@@ -315,9 +317,9 @@ function creacionInputTarjeta() {
     campoTarjeta.appendChild(labelCampo);
     campoTarjeta.appendChild(campo);
     labelCampo.innerHTML="Codigo Cliente";
-    labelCampo.setAttribute("id","labelCampo");
+    labelCampo.setAttribute("id","labelCodigoCliente");
     labelCampo.setAttribute("for","codigoCliente")
-    campo.setAttribute("id", "campo");
+    campo.setAttribute("id", "codigoCliente");
     campo.setAttribute("name","codigoCliente");
     campo.setAttribute("type", "text");
     campo.setAttribute("required", "");
