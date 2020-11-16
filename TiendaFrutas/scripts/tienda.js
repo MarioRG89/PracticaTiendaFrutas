@@ -227,7 +227,8 @@ function codigoClienteListener() {
 
 // Funcion que recoge todas las validaciones del formulario
 function validacionesFormulario(event) {
-   let todoCorrecto=true
+    let todoCorrecto=true
+    //validacion nombre
     let nombre = document.getElementById("nombre");
     let nombreLabel = document.getElementById("nombreLabel");
     if (!nombre.validity.valid) {
@@ -238,6 +239,7 @@ function validacionesFormulario(event) {
         nombreLabel.style.color = "black";
     }
     console.log(todoCorrecto + "nombre")
+    //Validacion Apellido
     let apellido = document.getElementById("apellido");
     let apellidoLabel = document.getElementById("apellidoLabel");
     if (!apellido.validity.valid) {
@@ -248,6 +250,7 @@ function validacionesFormulario(event) {
         apellidoLabel.style.color = "black";
     }
     console.log(todoCorrecto + "apellido")
+    //Validacion direccion
     let direccion = document.getElementById("direccion");
     let direccionLabel = document.getElementById("direccionLabel");
     if (!direccion.validity.valid) {
@@ -258,6 +261,7 @@ function validacionesFormulario(event) {
         direccionLabel.style.color = "black";
     }
     console.log(todoCorrecto + "direccion")
+    //Validacion  email correcto
     let email = document.getElementById("email");
     let emailLabel = document.getElementById("emailLabel");
     if (!email.validity.valid) {
@@ -268,37 +272,28 @@ function validacionesFormulario(event) {
         emailLabel.style.color = "black";
     }
     console.log(todoCorrecto + "email")
-    let radioPago = document.getElementsByName("pago");
-    let pago = document.getElementById("pagoLegend");
-    let radioEle = false;
-    for (i = 0; i < radioPago.length; i++) {
-        if (radioPago[i].checked == true) {
-            radioEle = true;
-        }
-        if (radioEle == false) {
-            pago.style.color = "red";
-            event.preventDefault();
-            todoCorrecto = false;
-        } else {
-            pago.style.color = "black";
-        }
+    //Validacion radioButton Pago 
+    let radioPago=document.querySelector("input[name=tarjeta]:checked");
+    let pago=document.getElementById("pagoLegend");
+    if(!radioPago){
+        pago.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    }else {
+        pago.style.color = "black";
+        console.log(todoCorrecto + "tarjeta true")
     }
-    console.log(todoCorrecto + "pago")
-    /*let radioTarjeta = document.getElementsByName("tarjeta");
+    //Validacion radioButton Tarjeta Cliente
+    let radioTarjeta = document.querySelector("input[name=tarjeta]:checked");
     let tarjeta = document.getElementById("tarjetaLegend");
-    let radio2 = false;
-    for (i = 0; i < radioTarjeta.length; i++) {
-        if (radioTarjeta[i].checked == true) {
-            radio2 = true;
-        }
-        if (radio2 == false) {
-            tarjeta.style.color = "red";
-            event.preventDefault();
-            todoCorrecto = false;
-        } else {
-            tarjeta.style.color = "black";
-        }
-    }*/
+    if(!radioTarjeta){
+        tarjeta.style.color = "red";
+        event.preventDefault();
+        todoCorrecto = false;
+    }else {
+        tarjeta.style.color = "black";
+        console.log(todoCorrecto + "tarjeta true")
+    }
     console.log(todoCorrecto + "final")
     return todoCorrecto;
 }
