@@ -1,4 +1,4 @@
-
+//Recoge lso eventos de los botones y muestra los datos en la ventana emergente
 window.onload = () => {
     
     let ventana= window.opener;

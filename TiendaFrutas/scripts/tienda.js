@@ -164,11 +164,14 @@ function anadirtextoDiv(nomFruta, nombre) {
 //funcion que limpia el area de texto, el bloque de la derecha y pone la variable kilos a 0 para poder iniciar compra desde 0 al cabo de 10
 function limpiarTodo() {
     let div = document.querySelectorAll("#contenedorDerecha p");
-    let inputs = document.querySelectorAll("input[type=text]");
+    let inputs = document.querySelectorAll("#contenedorDerecha div input[type=text]");
     //limpia bloque derecho
     for (let i = 0; i < div.length; i++) {
         div[i].remove();
-        inputs[i].value = "";
+    }
+    //limpia los input text del contenedor de las frutas
+    for(let i=0;i<inputs.length;i++){
+        inputs[i].innerHTML="";
     }
     //pone la varible kilo de cada fruta a cero
     arrayFrutas.forEach(frutas => {
