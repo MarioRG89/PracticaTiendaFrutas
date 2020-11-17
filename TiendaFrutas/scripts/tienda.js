@@ -38,57 +38,59 @@ let uvas = new FrutaInvierno("Uvas", 0, 1.75, "dentro");
 //Array que contiene los objetos fruta
 var arrayFrutas = [arandano, fresa, manzanaR, manzanaV, melon, naranja, pera, platano, sandia, uvas];
 //funcion para la suma de kilos para todas la frutas
-function sumaFruta(nombre) {
+function sumaFruta() {
+    console.log(this);
+    let nombre=this.toString()
     switch (nombre) {
         case "arandano":
-            kilos = Number(document.getElementById("arandanokilos").value)
-            arandano.kilos = kilos + arandano.kilos
-            anadirtextoDiv(arandano, nombre)
+            kilos = Number(document.getElementById("arandanokilos").value);
+            arandano.kilos = kilos + arandano.kilos;
+            anadirtextoDiv(arandano, nombre);
             break;
-        case "fresa":
-            kilos = Number(document.getElementById("fresakilos").value)
-            fresa.kilos = kilos + fresa.kilos
-            anadirtextoDiv(fresa, nombre)
+        case 'fresa':
+            kilos = Number(document.getElementById("fresakilos").value);
+            fresa.kilos = kilos + fresa.kilos;
+            anadirtextoDiv(fresa, nombre);
             break;
         case "manzanaR":
-            kilos = Number(document.getElementById("manzanaRkilos").value)
-            manzanaR.kilos = kilos + manzanaR.kilos
-            anadirtextoDiv(manzanaR, nombre)
+            kilos = Number(document.getElementById("manzanaRkilos").value);
+            manzanaR.kilos = kilos + manzanaR.kilos;
+            anadirtextoDiv(manzanaR, nombre);
             break;
         case "manzanaV":
-            kilos = Number(document.getElementById("manzanaVkilos").value)
-            manzanaV.kilos = kilos + manzanaV.kilos
-            anadirtextoDiv(manzanaV, nombre)
+            kilos = Number(document.getElementById("manzanaVkilos").value);
+            manzanaV.kilos = kilos + manzanaV.kilos;
+            anadirtextoDiv(manzanaV, nombre);
             break;
         case "melon":
-            kilos = Number(document.getElementById("melonkilos").value)
-            melon.kilos = kilos + melon.kilos
-            anadirtextoDiv(melon, nombre)
+            kilos = Number(document.getElementById("melonkilos").value);
+            melon.kilos = kilos + melon.kilos;
+            anadirtextoDiv(melon, nombre);
             break;
         case "naranja":
-            kilos = Number(document.getElementById("naranjakilos").value)
-            naranja.kilos = kilos + naranja.kilos
-            anadirtextoDiv(naranja, nombre)
+            kilos = Number(document.getElementById("naranjakilos").value);
+            naranja.kilos = kilos + naranja.kilos;
+            anadirtextoDiv(naranja, nombre);
             break;
         case "pera":
-            kilos = Number(document.getElementById("perakilos").value)
-            pera.kilos = kilos + pera.kilos
-            anadirtextoDiv(pera, nombre)
+            kilos = Number(document.getElementById("perakilos").value);
+            pera.kilos = kilos + pera.kilos;
+            anadirtextoDiv(pera, nombre);
             break;
         case "platano":
-            kilos = Number(document.getElementById("platanokilos").value)
-            platano.kilos = kilos + platano.kilos
-            anadirtextoDiv(platano, nombre)
+            kilos = Number(document.getElementById("platanokilos").value);
+            platano.kilos = kilos + platano.kilos;
+            anadirtextoDiv(platano, nombre);
             break;
         case "sandia":
-            kilos = Number(document.getElementById("sandiakilos").value)
-            sandia.kilos = kilos + sandia.kilos
-            anadirtextoDiv(sandia, nombre)
+            kilos = Number(document.getElementById("sandiakilos").value);
+            sandia.kilos = kilos + sandia.kilos;
+            anadirtextoDiv(sandia, nombre);
             break;
         case "uvas":
-            kilos = Number(document.getElementById("uvaskilos").value)
-            uvas.kilos = kilos + uvas.kilos
-            anadirtextoDiv(uvas, nombre)
+            kilos = Number(document.getElementById("uvaskilos").value);
+            uvas.kilos = kilos + uvas.kilos;
+            anadirtextoDiv(uvas, nombre);
             break;
     }
 }
@@ -146,14 +148,14 @@ function anadirtextoDiv(nomFruta, nombre) {
         divTexto.appendChild(parrafoTexto);
         parrafoTexto.classList.add(nombre);
         parrafoTexto.appendChild(nodoTexto);
-        divTexto.scrollTo(0, 100);
+        divTexto.scrollIntoView(false);
         //bucle para añadir la clase activa a los parrafos que tengan la misma clase y asi cambiar el color del texto
         for (let i = 0; i < document.querySelectorAll("#contenedorDerecha p").length; i++) {
             const elemento = document.querySelectorAll("#contenedorDerecha p")[i];
             if (elemento.getAttribute("class").includes(nombre)) {
                 elemento.classList.add("activa");
             } else {
-                elemento.classList.remove("activa")
+                elemento.classList.remove("activa");
             }
         }
     }
@@ -187,8 +189,38 @@ window.onload = function () {
     }, false)
     codigoClienteListener();
     imageneToolTip();
-    imagenesClick();
+    listenerImagenesClick();
+    cambiaColorAlLimpiar();
 }
+//Funcion que cambia el color de los labels y legends al dar click al boton limpiar
+function cambiaColorAlLimpiar() {
+    document.getElementById("limpiar").addEventListener("click", function () {
+        let labels = document.getElementsByTagName("label");
+        let titulos = document.getElementsByTagName("legend");
+        for (i = 0; i < labels.length; i++) {
+            labels[i].style.color = "black";
+        }
+        for (i = 0; i < titulos.length; i++) {
+            titulos[i].style.color = "black";
+        }
+    }, false);
+}
+
+//funcion que recoge los listener al hacer click en las imagenes
+function listenerImagenesClick() {
+    let imagenes = document.getElementsByTagName("img");
+    imagenes[0].addEventListener("click", sumaFruta.bind("arandano"), false);
+    imagenes[1].addEventListener("click", sumaFruta.bind('fresa'), false);
+    imagenes[2].addEventListener("click", sumaFruta.bind("manzanaR"), false);
+    imagenes[3].addEventListener("click", sumaFruta.bind("manzanaV"), false);
+    imagenes[4].addEventListener("click", sumaFruta.bind("melon"), false);
+    imagenes[5].addEventListener("click", sumaFruta.bind("naranja"), false);
+    imagenes[6].addEventListener("click", sumaFruta.bind("pera"), false);
+    imagenes[7].addEventListener("click", sumaFruta.bind("platano"), false);
+    imagenes[8].addEventListener("click", sumaFruta.bind("sandia"), false);
+    imagenes[9].addEventListener("click", sumaFruta.bind("uvas"), false);
+}
+
 //funcion que recoge el listener para mostrar el tooltip al pasar por encima de la imagen
 function imageneToolTip() {
     let imagenes = document.getElementsByTagName("img");
@@ -197,6 +229,7 @@ function imageneToolTip() {
             document.getElementById("div" + i).classList.add("tooltip");
             document.getElementById("span" + i).innerHTML = arrayFrutas[i].getDatos2();
             document.getElementById("span" + i).classList.add("tooltiptext");
+            
         }, false);
     }
 }
@@ -310,20 +343,7 @@ function validacionesFormulario(event) {
     return todoCorrecto;
 }
 
-//Funcion que recoge los listener  al hacer click en la imagenes
-function imagenesClick() {
-    let imagenes = document.getElementsByTagName("img");
-    imagenes[0].addEventListener("click", sumaFruta("arandano"));
-    imagenes[1].addEventListener("click", sumaFruta("fresa"));
-    imagenes[2].addEventListener("click", sumaFruta("manzanaR"));
-    imagenes[3].addEventListener("click", sumaFruta("manzanaV"));
-    imagenes[4].addEventListener("click", sumaFruta("melon"));
-    imagenes[5].addEventListener("click", sumaFruta("naranja"));
-    imagenes[6].addEventListener("click", sumaFruta("pera"));
-    imagenes[7].addEventListener("click", sumaFruta("platano"));
-    imagenes[8].addEventListener("click", sumaFruta("sandia"));
-    imagenes[9].addEventListener("click", sumaFruta("uvas"));
-}
+
 //funcion que crea el input y el label del codigo cliente cuando das en el radio button de si de tarjeta cliente
 function creacionInputTarjeta() {
     let campoTarjeta = document.getElementById("tarjeta");

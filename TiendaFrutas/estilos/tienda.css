@@ -73,8 +73,8 @@ form {
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: black;
-    color: #fff;
+    background-color: mediumaquamarine;
+    color: black;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
