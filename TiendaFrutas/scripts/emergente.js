@@ -9,7 +9,7 @@ window.onload = () => {
    
     divEmerg.innerHTML += "<p>" + "Fecha de compra : " + ventana.fechaActual.toLocaleString() + "<br>"  + "</p>" ;
     divEmerg.innerHTML += "<p>" +  ventana.recogidaResultados(ventana.arrayFrutas)  + "</p>";
-    divEmerg.innerHTML += "<p>" + "Precio total : " + ventana.obtenerprecioTotal(ventana.arrayFrutas) + " €" + "<br>"  + "</p>";
+    divEmerg.innerHTML += "<p>" + "Precio total : " + parseFloat(Math.floor(ventana.obtenerprecioTotal(ventana.arrayFrutas) * 100) / 100).toFixed(2) + " €" + "<br>"  + "</p>";
     divEmerg.innerHTML += "<p>" + ("Precio medio : " + ventana.precioMedio(ventana.arrayFrutas).toFixed(3) + " €/kg " + "<br>") + "</p>" ;
     boton1.addEventListener("click", (event) => {
         window.close();
