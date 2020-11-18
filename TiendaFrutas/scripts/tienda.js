@@ -39,7 +39,7 @@ let uvas = new FrutaInvierno("Uvas", 0, 1.75, "dentro");
 var arrayFrutas = [arandano, fresa, manzanaR, manzanaV, melon, naranja, pera, platano, sandia, uvas];
 //funcion para la suma de kilos para todas la frutas
 function sumaFruta() {
-    console.log(this);
+   
     let nombre=this.toString()
     switch (nombre) {
         case "arandano":
@@ -184,7 +184,6 @@ window.onload = function () {
     creacionInputTarjeta();
     formulario.addEventListener("submit", event => {
         let todoCorrecto = validacionesFormulario(event);
-        console.log(todoCorrecto);
         if (todoCorrecto) {
             window.open("./emergente.html", "pop-up", "width=500px height=300px");
             event.preventDefault();
@@ -274,7 +273,7 @@ function validacionesFormulario(event) {
     } else {
         nombreLabel.style.color = "black";
     }
-    console.log(todoCorrecto + "nombre")
+  
     //Validacion Apellido
     let apellido = document.getElementById("apellido");
     let apellidoLabel = document.getElementById("apellidoLabel");
@@ -285,7 +284,7 @@ function validacionesFormulario(event) {
     } else {
         apellidoLabel.style.color = "black";
     }
-    console.log(todoCorrecto + "apellido")
+ 
     //Validacion direccion
     let direccion = document.getElementById("direccion");
     let direccionLabel = document.getElementById("direccionLabel");
@@ -296,7 +295,7 @@ function validacionesFormulario(event) {
     } else {
         direccionLabel.style.color = "black";
     }
-    console.log(todoCorrecto + "direccion")
+ 
     //Validacion  email correcto
     let email = document.getElementById("email");
     let emailLabel = document.getElementById("emailLabel");
@@ -307,7 +306,7 @@ function validacionesFormulario(event) {
     } else {
         emailLabel.style.color = "black";
     }
-    console.log(todoCorrecto + "email")
+   
     //Validacion radioButton Pago 
     let radioPago=document.querySelector("input[name=pago]:checked");
     let pago=document.getElementById("pagoLegend");
@@ -317,7 +316,7 @@ function validacionesFormulario(event) {
         todoCorrecto = false;
     }else {
         pago.style.color = "black";
-        console.log(todoCorrecto + "tarjeta true")
+    
     }
     //Validacion radioButton Tarjeta Cliente
     let radioTarjeta = document.getElementsByName("tarjeta");
@@ -333,16 +332,13 @@ function validacionesFormulario(event) {
         tarjeta.style.color = "red";
         event.preventDefault();
         todoCorrecto = false;
-        console.log(todoCorrecto + " si y no no estan checkeados")
     }else if(radioTarjeta[1].checked){
         tarjeta.style.color = "black";
         codigoClienteLabel.style.color = "black";
-        console.log(todoCorrecto + "solo el no correcto")
     }else{
         tarjeta.style.color = "black";
         codigoClienteLabel.style.color = "black";
     }
-    console.log(todoCorrecto + "final")
     return todoCorrecto;
 }
 
